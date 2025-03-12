@@ -75,7 +75,7 @@
         <footer class="footer text-faded text-center py-5">
             <div class="container">
                 <p class="m-0 small">Copyright &copy; Your Website 2023</p>
-                <div class="footer-counter" id="counter">Visitas: 0</div>
+                <div class="footer-counter" id="counter">Visitas: Cargando...</div>
             </div>
         </footer>
         <!-- Bootstrap core JS-->
@@ -92,13 +92,31 @@
             // Función para obtener el número de visitas
             async function fetchVisits() {
                 try {
+                    counterElement.textContent = "Visitas: Cargando..."; // Mostrar mensaje de carga
                     const response = await fetch(SHEETDB_URL);
+
+                    // Verificar si la respuesta es exitosa
+                    if (!response.ok) {
+                        throw new Error(`Error HTTP: ${response.status}`);
+                    }
+
                     const data = await response.json();
+
+                    // Verificar si los datos tienen la estructura esperada
+                    if (!Array.isArray(data) || data.length === 0 || !data[0].hasOwnProperty('visits')) {
+                        throw new Error("La estructura de los datos no es válida.");
+                    }
+
                     const visits = data[0].visits || 0; // Obtener el valor de "visits"
                     counterElement.textContent = `Visitas: ${visits}`;
-                    updateVisits(visits);
+
+                    // Actualizar solo si no se ha contado esta visita en esta sesión
+                    if (!localStorage.getItem('visitCounted')) {
+                        updateVisits(visits);
+                        localStorage.setItem('visitCounted', 'true');
+                    }
                 } catch (error) {
-                    console.error("Error al obtener las visitas:", error);
+                    console.error("Error al obtener las visitas:", error.message);
                     counterElement.textContent = "Visitas: Error";
                 }
             }
@@ -107,15 +125,20 @@
             async function updateVisits(currentVisits) {
                 const newVisits = parseInt(currentVisits) + 1;
                 try {
-                    await fetch(SHEETDB_URL, {
+                    const response = await fetch(SHEETDB_URL, {
                         method: "POST",
                         headers: { "Content-Type": "application/json" },
                         body: JSON.stringify({
                             data: [{ visits: newVisits }]
                         })
                     });
+
+                    // Verificar si la actualización fue exitosa
+                    if (!response.ok) {
+                        throw new Error(`Error HTTP al actualizar: ${response.status}`);
+                    }
                 } catch (error) {
-                    console.error("Error al actualizar las visitas:", error);
+                    console.error("Error al actualizar las visitas:", error.message);
                 }
             }
 
