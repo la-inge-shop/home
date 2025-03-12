@@ -27,8 +27,6 @@
                 <span class="site-heading-lower">- La Inge -</span>
             </h1>
         </header>
-        <!-- User_Count-->
-       
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav">
             <div class="container">
@@ -50,7 +48,7 @@
                     <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="assets/img/intro.jpg" alt="..." />
                     <div class="intro-text left-0 text-center bg-faded p-5 rounded">
                         <h2 class="section-heading mb-4">
-                            <span class="section-heading-upper">   Sabor natural, bienestar auténtico, ¡Ahora!. 🌱</span>
+                            <span class="section-heading-upper">Sabor natural, bienestar auténtico, ¡Ahora!. 🌱</span>
                             <span class="section-heading-lower">¿Productos orgánicos?</span>
                         </h2>
                         <p class="mb-3">Los productos orgánicos son una opción saludable porque se cultivan y elaboran sin pesticidas, químicos ni conservadores artificiales. Al consumirlos, reduces la exposición a sustancias dañinas, fortaleces tu sistema inmunológico y disfrutas de alimentos con mayor valor nutricional. Elegir orgánico es elegir bienestar para ti y para el planeta.</p>
@@ -85,18 +83,44 @@
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
         <script>
-            // Usando localStorage para guardar el contador en el navegador del usuario
-            const counterElement = document.getElementById('counter');
-            let visitCount = localStorage.getItem('visitCount');
+            // URL de tu API de SheetDB (reemplaza con tu URL real)
+            const SHEETDB_URL = "https://sheetdb.io/api/v1/jvbe0fp4d9aqu"; // Reemplaza con tu URL de SheetDB
 
-            if (visitCount) {
-                visitCount = parseInt(visitCount) + 1;
-            } else {
-                visitCount = 1; // Primera visita
+            // Elemento donde se mostrará el contador
+            const counterElement = document.getElementById('counter');
+
+            // Función para obtener el número de visitas
+            async function fetchVisits() {
+                try {
+                    const response = await fetch(SHEETDB_URL);
+                    const data = await response.json();
+                    const visits = data[0].visits || 0; // Obtener el valor de "visits"
+                    counterElement.textContent = `Visitas: ${visits}`;
+                    updateVisits(visits);
+                } catch (error) {
+                    console.error("Error al obtener las visitas:", error);
+                    counterElement.textContent = "Visitas: Error";
+                }
             }
 
-            localStorage.setItem('visitCount', visitCount);
-            counterElement.textContent = `Visitas: ${visitCount}`;
+            // Función para actualizar el número de visitas
+            async function updateVisits(currentVisits) {
+                const newVisits = parseInt(currentVisits) + 1;
+                try {
+                    await fetch(SHEETDB_URL, {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({
+                            data: [{ visits: newVisits }]
+                        })
+                    });
+                } catch (error) {
+                    console.error("Error al actualizar las visitas:", error);
+                }
+            }
+
+            // Inicializar el contador
+            fetchVisits();
         </script>
     </body>
 </html>
