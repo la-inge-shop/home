@@ -58,6 +58,94 @@
                 </div>
             </div>
         </section>
+
+        <!-- Carrusel de opiniones -->
+<section class="testimonial-carousel">
+    <div class="carousel-container">
+        <!-- Primer conjunto de opiniones -->
+        <div class="testimonial">
+            <img src="assets/img/cliente1.jpg" alt="Cliente 1" class="testimonial-image">
+            <p class="testimonial-text">"Tienen nueva clienta, me encantó la sus mermeladas, 10/10!"</p>
+        </div>
+        <div class="testimonial">
+            <img src="assets/img/cliente2.jpg" alt="Cliente 2" class="testimonial-image">
+            <p class="testimonial-text">"Muy linda atención al cliente y excelente presentación!"</p>
+        </div>
+        <div class="testimonial">
+            <img src="assets/img/cliente3.jpg" alt="Cliente 3" class="testimonial-image">
+            <p class="testimonial-text">"Muy rico y eso que no tiene condimentos. Justo lo que necesitaba"</p>
+        </div>
+
+        <!-- Segundo conjunto de opiniones (repetición para efecto continuo) -->
+        <div class="testimonial">
+            <img src="assets/img/cliente1.jpg" alt="Cliente 1" class="testimonial-image">
+            <p class="testimonial-text">"¡Delicioso! La comida es fresca y natural. ¡Totalmente recomendable!"</p>
+        </div>
+        <div class="testimonial">
+            <img src="assets/img/cliente2.jpg" alt="Cliente 2" class="testimonial-image">
+            <p class="testimonial-text">"Me encantó la atención y la calidad de los productos. ¡Volveré a comprar pronto!"</p>
+        </div>
+        <div class="testimonial">
+            <img src="assets/img/cliente3.jpg" alt="Cliente 3" class="testimonial-image">
+            <p class="testimonial-text">"Comida saludable y deliciosa. ¡Perfecta para mi estilo de vida!"</p>
+        </div>
+    </div>
+</section>
+
+<style>
+    /* Contenedor del carrusel */
+    .testimonial-carousel {
+        width: 100%;
+        overflow: hidden;
+        padding: 40px 0; /* Espaciado arriba y abajo */
+        background-color: #f8f9fa; /* Fondo claro */
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+    }
+
+    /* Contenedor interno (donde se mueven las opiniones) */
+    .carousel-container {
+        display: flex;
+        animation: scroll-left 20s linear infinite; /* Animación continua */
+    }
+
+    /* Estilo de cada testimonio */
+    .testimonial {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0 20px;
+        padding: 10px;
+        text-align: center;
+        min-width: 250px; /* Ancho mínimo para que no se apilen */
+    }
+
+    /* Imagen del cliente */
+    .testimonial-image {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%; /* Forma circular */
+        object-fit: cover; /* Ajustar la imagen al círculo */
+        margin-bottom: 10px;
+    }
+
+    /* Texto del testimonio */
+    .testimonial-text {
+        font-size: 0.9rem;
+        color: #333;
+        line-height: 1.4;
+    }
+
+    /* Animación de desplazamiento */
+    @keyframes scroll-left {
+        0% {
+            transform: translateX(0); /* Comienza en la posición inicial */
+        }
+        100% {
+            transform: translateX(-50%); /* Se desplaza hacia la izquierda */
+        }
+    }
+</style>
+        
         <footer class="footer text-faded text-center py-5">
             <div class="container"><p class="m-0 small">Copyright &copy; Your Website 2023</p></div>
         </footer>
