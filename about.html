@@ -60,7 +60,9 @@
         </section>
 
         <!-- Título del carrusel -->
-<h2 class="testimonial-title">Opiniones de nuestros clientes frecuentes</h2>
+<div class="testimonial-title-container">
+    <h2 class="testimonial-title">Opiniones de nuestros clientes frecuentes</h2>
+</div>
 
 <!-- Carrusel de opiniones -->
 <section class="testimonial-carousel">
@@ -79,35 +81,61 @@
             <p class="testimonial-text">"Muy rico y eso que no tiene condimentos. Justo lo que necesitaba"</p>
         </div>
         <div class="testimonial">
-            <img src="assets/img/cliente1.jpg" alt="Cliente 1" class="testimonial-image">
+            <img src="assets/img/cliente4.jpg" alt="Cliente 4" class="testimonial-image">
             <p class="testimonial-text">"¡Delicioso! La comida es fresca y natural. ¡Totalmente recomendable!"</p>
         </div>
         <div class="testimonial">
-            <img src="assets/img/cliente2.jpg" alt="Cliente 2" class="testimonial-image">
+            <img src="assets/img/cliente5.jpg" alt="Cliente 5" class="testimonial-image">
             <p class="testimonial-text">"Me encantó la atención y la calidad de los productos. ¡Volveré a comprar pronto!"</p>
         </div>
         <div class="testimonial">
-            <img src="assets/img/cliente3.jpg" alt="Cliente 3" class="testimonial-image">
+            <img src="assets/img/cliente6.jpg" alt="Cliente 6" class="testimonial-image">
             <p class="testimonial-text">"Comida saludable y deliciosa. ¡Perfecta para mi estilo de vida!"</p>
+        </div>
+        <div class="testimonial">
+            <img src="assets/img/cliente7.jpg" alt="Cliente 7" class="testimonial-image">
+            <p class="testimonial-text">"Productos orgánicos de alta calidad. ¡Feliz de apoyar esta iniciativa!"</p>
+        </div>
+        <div class="testimonial">
+            <img src="assets/img/cliente8.jpg" alt="Cliente 8" class="testimonial-image">
+            <p class="testimonial-text">"La entrega fue rápida y todo llegó en perfectas condiciones. ¡Gracias!"</p>
+        </div>
+        <div class="testimonial">
+            <img src="assets/img/cliente9.jpg" alt="Cliente 9" class="testimonial-image">
+            <p class="testimonial-text">"Una experiencia increíble. ¡Recomiendo sus productos a todos mis amigos!"</p>
+        </div>
+        <div class="testimonial">
+            <img src="assets/img/cliente10.jpg" alt="Cliente 10" class="testimonial-image">
+            <p class="testimonial-text">"El sabor es auténtico y natural. ¡No puedo esperar para probar más!"</p>
         </div>
     </div>
 </section>
 
 <style>
+    /* Estilo del contenedor del título */
+    .testimonial-title-container {
+        background-color: #f4e9d8; /* Color café beige claro */
+        padding: 10px 20px;
+        border-radius: 10px; /* Esquinas redondeadas */
+        margin: 0 auto 20px auto; /* Espaciado arriba y abajo */
+        max-width: 400px; /* Ancho máximo del contenedor */
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+    }
+
     /* Estilo del título del carrusel */
     .testimonial-title {
         text-align: center;
         font-size: 1.5rem;
         font-weight: bold;
         color: #5a4e41; /* Color café oscuro para el texto */
-        margin-bottom: 20px;
+        margin: 0; /* Sin margen adicional */
     }
 
     /* Contenedor del carrusel */
     .testimonial-carousel {
         width: 100%;
         overflow: hidden;
-        padding: 40px 0; /* Espaciado arriba y abajo */
+        padding: 20px 0; /* Espaciado arriba y abajo reducido */
         background-color: #f4e9d8; /* Fondo café beige claro */
         box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Sombra ligera */
     }
@@ -115,7 +143,7 @@
     /* Contenedor interno (donde se mueven las opiniones) */
     .carousel-container {
         display: flex;
-        animation: scroll-left 30s linear infinite; /* Animación continua más lenta */
+        animation: scroll-left 40s linear infinite; /* Animación continua más lenta */
     }
 
     /* Estilo de cada testimonio */
@@ -123,16 +151,18 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin: 0 20px;
+        margin: 0 10px; /* Margen reducido entre opiniones */
         padding: 10px;
         text-align: center;
         min-width: 250px; /* Ancho mínimo para que no se apilen */
+        opacity: 1; /* Opacidad inicial */
+        transition: opacity 0.5s ease-in-out; /* Transición suave para desvanecerse */
     }
 
     /* Imagen del cliente */
     .testimonial-image {
-        width: 60px;
-        height: 60px;
+        width: 50px; /* Tamaño reducido */
+        height: 50px; /* Tamaño reducido */
         border-radius: 50%; /* Forma circular */
         object-fit: cover; /* Ajustar la imagen al círculo */
         margin-bottom: 10px;
@@ -141,7 +171,7 @@
 
     /* Texto del testimonio */
     .testimonial-text {
-        font-size: 0.9rem;
+        font-size: 0.85rem; /* Tamaño reducido */
         color: #5a4e41; /* Color café oscuro para el texto */
         line-height: 1.4;
     }
