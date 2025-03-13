@@ -114,30 +114,59 @@
 <style>
     /* Estilo del contenedor del título */
     .testimonial-title-container {
-        background-color: #f4e9d8; /* Color café beige claro */
-        padding: 10px 20px;
-        border-radius: 10px; /* Esquinas redondeadas */
-        margin: 0 auto 20px auto; /* Espaciado arriba y abajo */
-        max-width: 400px; /* Ancho máximo del contenedor */
-        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+        background-color: #d4c7b3; /* Café neutro más intenso */
+        padding: 15px 30px;
+        border-radius: 15px; /* Bordes redondeados más pronunciados */
+        margin: 0 auto 30px auto; /* Espaciado mayor arriba y abajo */
+        max-width: 500px; /* Ancho máximo ajustado */
+        box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1); /* Sombra más pronunciada */
+        position: relative; /* Para agregar detalles decorativos */
+    }
+
+    /* Detalles decorativos alrededor del título */
+    .testimonial-title-container::before {
+        content: '';
+        position: absolute;
+        top: -10px;
+        left: -10px;
+        right: -10px;
+        bottom: -10px;
+        border: 2px dashed #bcaaa4; /* Borde punteado más cálido */
+        border-radius: 20px; /* Bordes redondeados */
+        z-index: -1; /* Detrás del contenedor principal */
     }
 
     /* Estilo del título del carrusel */
     .testimonial-title {
         text-align: center;
-        font-size: 1.5rem;
+        font-size: 1.6rem;
         font-weight: bold;
-        color: #5a4e41; /* Color café oscuro para el texto */
-        margin: 0; /* Sin margen adicional */
+        color: #5a4e41; /* Café oscuro más cálido */
+        margin: 0;
+        letter-spacing: 1px; /* Espaciado entre letras */
     }
 
     /* Contenedor del carrusel */
     .testimonial-carousel {
         width: 100%;
         overflow: hidden;
-        padding: 20px 0; /* Espaciado arriba y abajo reducido */
-        background-color: #f4e9d8; /* Fondo café beige claro */
-        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+        padding: 25px 0; /* Espaciado arriba y abajo ajustado */
+        background-color: #eae0d5; /* Café neutro claro pero más intenso */
+        box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1); /* Sombra más pronunciada */
+        position: relative; /* Para agregar detalles decorativos */
+    }
+
+    /* Detalles decorativos alrededor del carrusel */
+    .testimonial-carousel::before {
+        content: '';
+        position: absolute;
+        top: -15px;
+        left: -15px;
+        right: -15px;
+        bottom: -15px;
+        border: 3px dashed #bcaaa4; /* Borde punteado más cálido */
+        border-radius: 20px; /* Bordes redondeados */
+        z-index: -1; /* Detrás del contenedor principal */
     }
 
     /* Contenedor interno (donde se mueven las opiniones) */
@@ -151,29 +180,33 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin: 0 10px; /* Margen reducido entre opiniones */
-        padding: 10px;
+        margin: 0 15px; /* Margen ajustado */
+        padding: 15px;
         text-align: center;
         min-width: 250px; /* Ancho mínimo para que no se apilen */
+        background-color: #f4f0ea; /* Fondo suave pero más cálido */
+        border-radius: 10px; /* Bordes redondeados */
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05); /* Sombra ligera */
         opacity: 1; /* Opacidad inicial */
-        transition: opacity 0.5s ease-in-out; /* Transición suave para desvanecerse */
+        transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out; /* Transición suave */
     }
 
     /* Imagen del cliente */
     .testimonial-image {
-        width: 50px; /* Tamaño reducido */
-        height: 50px; /* Tamaño reducido */
+        width: 55px; /* Tamaño ligeramente aumentado */
+        height: 55px; /* Tamaño ligeramente aumentado */
         border-radius: 50%; /* Forma circular */
         object-fit: cover; /* Ajustar la imagen al círculo */
         margin-bottom: 10px;
-        border: 2px solid #d4c7b3; /* Borde claro para resaltar la imagen */
+        border: 2px solid #bcaaa4; /* Borde claro para resaltar la imagen */
+        box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1); /* Sombra ligera */
     }
 
     /* Texto del testimonio */
     .testimonial-text {
-        font-size: 0.85rem; /* Tamaño reducido */
-        color: #5a4e41; /* Color café oscuro para el texto */
-        line-height: 1.4;
+        font-size: 0.9rem; /* Tamaño ligeramente aumentado */
+        color: #5a4e41; /* Café oscuro más cálido */
+        line-height: 1.5; /* Espaciado entre líneas ajustado */
     }
 
     /* Animación de desplazamiento */
