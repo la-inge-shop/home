@@ -59,13 +59,16 @@
             </div>
         </section>
 
-        <!-- Carrusel de opiniones -->
+        <!-- Título del carrusel -->
+<h2 class="testimonial-title">Opiniones de nuestros clientes frecuentes</h2>
+
+<!-- Carrusel de opiniones -->
 <section class="testimonial-carousel">
     <div class="carousel-container">
-        <!-- Primer conjunto de opiniones -->
+        <!-- Conjunto de opiniones -->
         <div class="testimonial">
             <img src="assets/img/cliente1.jpg" alt="Cliente 1" class="testimonial-image">
-            <p class="testimonial-text">"Tienen nueva clienta, me encantó la sus mermeladas, 10/10!"</p>
+            <p class="testimonial-text">"Tienen nueva clienta, me encantó sus mermeladas, 10/10!"</p>
         </div>
         <div class="testimonial">
             <img src="assets/img/cliente2.jpg" alt="Cliente 2" class="testimonial-image">
@@ -75,8 +78,6 @@
             <img src="assets/img/cliente3.jpg" alt="Cliente 3" class="testimonial-image">
             <p class="testimonial-text">"Muy rico y eso que no tiene condimentos. Justo lo que necesitaba"</p>
         </div>
-
-        <!-- Segundo conjunto de opiniones (repetición para efecto continuo) -->
         <div class="testimonial">
             <img src="assets/img/cliente1.jpg" alt="Cliente 1" class="testimonial-image">
             <p class="testimonial-text">"¡Delicioso! La comida es fresca y natural. ¡Totalmente recomendable!"</p>
@@ -93,19 +94,28 @@
 </section>
 
 <style>
+    /* Estilo del título del carrusel */
+    .testimonial-title {
+        text-align: center;
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #5a4e41; /* Color café oscuro para el texto */
+        margin-bottom: 20px;
+    }
+
     /* Contenedor del carrusel */
     .testimonial-carousel {
         width: 100%;
         overflow: hidden;
         padding: 40px 0; /* Espaciado arriba y abajo */
-        background-color: #f8f9fa; /* Fondo claro */
+        background-color: #f4e9d8; /* Fondo café beige claro */
         box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Sombra ligera */
     }
 
     /* Contenedor interno (donde se mueven las opiniones) */
     .carousel-container {
         display: flex;
-        animation: scroll-left 20s linear infinite; /* Animación continua */
+        animation: scroll-left 30s linear infinite; /* Animación continua más lenta */
     }
 
     /* Estilo de cada testimonio */
@@ -126,12 +136,13 @@
         border-radius: 50%; /* Forma circular */
         object-fit: cover; /* Ajustar la imagen al círculo */
         margin-bottom: 10px;
+        border: 2px solid #d4c7b3; /* Borde claro para resaltar la imagen */
     }
 
     /* Texto del testimonio */
     .testimonial-text {
         font-size: 0.9rem;
-        color: #333;
+        color: #5a4e41; /* Color café oscuro para el texto */
         line-height: 1.4;
     }
 
