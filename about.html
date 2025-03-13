@@ -65,5 +65,53 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
+
+        <!-- Botón de WhatsApp -->
+<a href="https://wa.me/5584785119?text=Hola,%20quiero%20realizar%20un%20pedido" 
+   target="_blank" 
+   class="whatsapp-button">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+</a>
+
+<style>
+    /* Estilo del botón de WhatsApp */
+    .whatsapp-button {
+        position: fixed; /* Fijo en la pantalla */
+        bottom: 20px; /* Distancia desde el fondo */
+        left: 20px; /* Distancia desde la izquierda */
+        width: 60px; /* Ancho del botón */
+        height: 60px; /* Alto del botón */
+        background-color: #25D366; /* Color verde de WhatsApp */
+        color: white;
+        border-radius: 50%; /* Forma circular */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Sombra para dar profundidad */
+        z-index: 1000; /* Asegura que esté siempre visible */
+        animation: pulse 1.5s infinite; /* Animación de pulsación */
+    }
+
+    /* Ícono de WhatsApp */
+    .whatsapp-button img {
+        width: 36px; /* Tamaño del ícono */
+        height: 36px;
+    }
+
+    /* Animación de pulsación */
+    @keyframes pulse {
+        0% {
+            transform: scale(1); /* Tamaño normal */
+        }
+        50% {
+            transform: scale(1.1); /* Aumenta ligeramente */
+        }
+        100% {
+            transform: scale(1); /* Vuelve al tamaño normal */
+        }
+    }
+</style>
+        
     </body>
 </html>
