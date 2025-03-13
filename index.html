@@ -111,11 +111,8 @@
                     const visits = data.record.visits || 0; // Obtener el valor de "visits"
                     counterElement.textContent = `Visitas: ${visits}`;
 
-                    // Actualizar solo si no se ha contado esta visita en esta sesión
-                    if (!localStorage.getItem('visitCounted')) {
-                        updateVisits(visits);
-                        localStorage.setItem('visitCounted', 'true');
-                    }
+                    // Actualizar el contador cada vez que alguien visita la página
+                    updateVisits(visits);
                 } catch (error) {
                     console.error("Error al obtener las visitas:", error.message);
                     counterElement.textContent = "Visitas: Error";
