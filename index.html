@@ -83,8 +83,12 @@
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
         <script>
-            // URL de tu API de SheetDB (actualizada)
-            const SHEETDB_URL = "https://sheetdb.io/api/v1/qis8ez8ok8sfy"; // URL actualizada
+            // Configuración de JSONBin
+            const JSONBIN_URL = "https://api.jsonbin.io/v3/b/67d223698561e97a50ead685"; // Reemplazado con tu Bin ID
+            const JSONBIN_HEADERS = {
+                "Content-Type": "application/json",
+                "X-Master-Key": "$2a$10$gXAeMiY4L81C8vAEsVxN6uA/EQ.T/h80zTtFsLAoYMahNWGQYlnHq" // Reemplazado con tu Master Key
+            };
 
             // Elemento donde se mostrará el contador
             const counterElement = document.getElementById('counter');
@@ -93,7 +97,10 @@
             async function fetchVisits() {
                 try {
                     counterElement.textContent = "Visitas: Cargando..."; // Mostrar mensaje de carga
-                    const response = await fetch(SHEETDB_URL);
+                    const response = await fetch(JSONBIN_URL, {
+                        method: "GET",
+                        headers: JSONBIN_HEADERS
+                    });
 
                     // Verificar si la respuesta es exitosa
                     if (!response.ok) {
@@ -101,13 +108,7 @@
                     }
 
                     const data = await response.json();
-
-                    // Verificar si los datos tienen la estructura esperada
-                    if (!Array.isArray(data) || data.length === 0 || !data[0].hasOwnProperty('visits')) {
-                        throw new Error("La estructura de los datos no es válida.");
-                    }
-
-                    const visits = data[0].visits || 0; // Obtener el valor de "visits"
+                    const visits = data.record.visits || 0; // Obtener el valor de "visits"
                     counterElement.textContent = `Visitas: ${visits}`;
 
                     // Actualizar solo si no se ha contado esta visita en esta sesión
@@ -125,18 +126,13 @@
             async function updateVisits(currentVisits) {
                 const newVisits = parseInt(currentVisits) + 1;
                 try {
-                    const response = await fetch(SHEETDB_URL, {
-                        method: "POST",
-                        headers: { "Content-Type": "application/json" },
+                    await fetch(JSONBIN_URL, {
+                        method: "PUT",
+                        headers: JSONBIN_HEADERS,
                         body: JSON.stringify({
-                            data: [{ visits: newVisits }]
+                            visits: newVisits
                         })
                     });
-
-                    // Verificar si la actualización fue exitosa
-                    if (!response.ok) {
-                        throw new Error(`Error HTTP al actualizar: ${response.status}`);
-                    }
                 } catch (error) {
                     console.error("Error al actualizar las visitas:", error.message);
                 }
