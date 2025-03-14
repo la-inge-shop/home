@@ -91,20 +91,24 @@
             </div>
         </section>
 
+
         <!-- Galería de fotos -->
 <section class="photo-gallery">
     <div class="gallery-container">
-        <!-- Imagen principal -->
-        <img id="gallery-image" src="assets/img/photogalery1.jpg" alt="Galería de fotos" class="gallery-image">
+        <!-- Contenedor con tamaño fijo -->
+        <div class="gallery-viewer">
+            <!-- Imagen principal -->
+            <img id="gallery-image" src="assets/img/photogalery1.jpg" alt="Galería de fotos" class="gallery-image">
 
-        <!-- Botones de navegación -->
-        <button class="gallery-button prev" onclick="changeImage(-1)">&#10094;</button>
-        <button class="gallery-button next" onclick="changeImage(1)">&#10095;</button>
-    </div>
+            <!-- Botones de navegación -->
+            <button class="gallery-button prev" onclick="changeImage(-1)">&#10094;</button>
+            <button class="gallery-button next" onclick="changeImage(1)">&#10095;</button>
+        </div>
 
-    <!-- Título de la galería -->
-    <div class="gallery-title-container">
-        <h2 class="gallery-title">Más productos y nuestros procesos</h2>
+        <!-- Título de la galería -->
+        <div class="gallery-title-container">
+            <h2 class="gallery-title">Más productos y nuestros procesos</h2>
+        </div>
     </div>
 </section>
 
@@ -115,25 +119,32 @@
         padding: 60px 0; /* Espaciado superior e inferior aumentado */
         background: linear-gradient(135deg, #f8f9fa, #eae0d5); /* Degradado sutil */
         text-align: center;
-        position: relative;
-        overflow: hidden;
     }
 
     /* Contenedor de la galería */
     .gallery-container {
+        display: flex;
+        flex-direction: column; /* Alinea los elementos en columna (fotos arriba, título abajo) */
+        align-items: center; /* Centra los elementos horizontalmente */
+        margin: 0 auto;
+        max-width: 700px; /* Ancho máximo del contenedor */
+    }
+
+    /* Contenedor del visualizador de la galería */
+    .gallery-viewer {
         position: relative;
-        display: inline-block;
-        max-width: 600px; /* Ancho máximo de la imagen */
-        margin: 0 auto; /* Centrado horizontal */
-        border-radius: 15px; /* Bordes redondeados más pronunciados */
-        overflow: hidden; /* Para que las esquinas redondeadas se apliquen correctamente */
+        width: 100%; /* Ancho fijo relativo al contenedor */
+        height: 400px; /* Altura fija */
+        overflow: hidden; /* Recorta cualquier contenido que exceda el tamaño */
+        border-radius: 15px; /* Bordes redondeados */
         box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1); /* Sombra más pronunciada */
     }
 
     /* Estilo de la imagen */
     .gallery-image {
         width: 100%;
-        height: auto;
+        height: 100%;
+        object-fit: cover; /* Asegura que la imagen cubra el área sin deformarse */
         border-radius: 15px; /* Bordes redondeados */
         transition: transform 0.3s ease; /* Animación al pasar el mouse */
     }
@@ -178,13 +189,10 @@
     /* Estilo del contenedor del título */
     .gallery-title-container {
         margin-top: 30px; /* Espaciado entre la galería y el título */
-        position: relative;
-        display: inline-block;
     }
 
     /* Estilo del título de la galería */
     .gallery-title {
-        display: inline-block;
         font-size: 1.6rem;
         font-weight: bold;
         color: #4d4033; /* Café oscuro más cálido */
@@ -230,6 +238,8 @@
     }
 </script>
 
+
+        
         
         <footer class="footer text-faded text-center py-5">
             <div class="container"><p class="m-0 small">Copyright &copy; todos los derechos reservador a "La Inge" 2025</p></div>
