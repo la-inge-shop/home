@@ -94,6 +94,11 @@
 
         <!-- Galería de fotos -->
 <section class="photo-gallery">
+    <!-- Título de la galería -->
+    <div class="gallery-title-container">
+        <h2 class="gallery-title">Más productos y nuestros procesos</h2>
+    </div>
+
     <div class="gallery-container">
         <!-- Contenedor con tamaño fijo -->
         <div class="gallery-viewer">
@@ -104,11 +109,6 @@
             <button class="gallery-button prev" onclick="changeImage(-1)">&#10094;</button>
             <button class="gallery-button next" onclick="changeImage(1)">&#10095;</button>
         </div>
-
-        <!-- Título de la galería -->
-        <div class="gallery-title-container">
-            <h2 class="gallery-title">Más productos y nuestros procesos</h2>
-        </div>
     </div>
 </section>
 
@@ -117,34 +117,60 @@
     .photo-gallery {
         width: 100%;
         padding: 60px 0; /* Espaciado superior e inferior aumentado */
-        background: linear-gradient(135deg, #f8f9fa, #eae0d5); /* Degradado sutil */
+        background: linear-gradient(135deg, #f6e1c5, #eae0d5); /* Degradado con el nuevo color */
         text-align: center;
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* Estilo del contenedor del título */
+    .gallery-title-container {
+        margin-bottom: 30px; /* Espaciado entre el título y la galería */
+    }
+
+    /* Estilo del título de la galería */
+    .gallery-title {
+        font-size: 1.6rem;
+        font-weight: bold;
+        color: #4d4033; /* Café oscuro más cálido */
+        background-color: #f6e1c5; /* Nuevo color de fondo */
+        padding: 15px 30px;
+        border-radius: 30px; /* Bordes redondeados estilo óvalo */
+        box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1); /* Sombra más pronunciada */
+        display: inline-block;
+        transition: transform 0.3s ease; /* Animación al pasar el mouse */
+    }
+
+    /* Hover en el título */
+    .gallery-title:hover {
+        transform: scale(1.05); /* Aumenta ligeramente al pasar el mouse */
     }
 
     /* Contenedor de la galería */
     .gallery-container {
         display: flex;
-        flex-direction: column; /* Alinea los elementos en columna (fotos arriba, título abajo) */
-        align-items: center; /* Centra los elementos horizontalmente */
-        margin: 0 auto;
-        max-width: 700px; /* Ancho máximo del contenedor */
+        justify-content: center; /* Centra horizontalmente */
+        align-items: center; /* Centra verticalmente */
+        position: relative;
     }
 
     /* Contenedor del visualizador de la galería */
     .gallery-viewer {
         position: relative;
-        width: 100%; /* Ancho fijo relativo al contenedor */
+        width: 700px; /* Ancho fijo */
         height: 400px; /* Altura fija */
         overflow: hidden; /* Recorta cualquier contenido que exceda el tamaño */
         border-radius: 15px; /* Bordes redondeados */
         box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1); /* Sombra más pronunciada */
+        background-color: #f6e1c5; /* Nuevo color de fondo */
     }
 
     /* Estilo de la imagen */
     .gallery-image {
         width: 100%;
         height: 100%;
-        object-fit: cover; /* Asegura que la imagen cubra el área sin deformarse */
+        object-fit: contain; /* Asegura que la imagen se ajuste completamente sin deformarse */
+        background-color: #f6e1c5; /* Color de fondo si la imagen no cubre todo el espacio */
         border-radius: 15px; /* Bordes redondeados */
         transition: transform 0.3s ease; /* Animación al pasar el mouse */
     }
@@ -186,26 +212,30 @@
         transform: scale(1.1); /* Efecto de agrandar */
     }
 
-    /* Estilo del contenedor del título */
-    .gallery-title-container {
-        margin-top: 30px; /* Espaciado entre la galería y el título */
+    /* Diseño en las partes blancas de los lados */
+    .photo-gallery::before,
+    .photo-gallery::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 10%; /* Ocupa el 10% de cada lado */
+        background: repeating-linear-gradient(
+            45deg,
+            rgba(255, 255, 255, 0.1),
+            rgba(255, 255, 255, 0.1) 10px,
+            transparent 10px,
+            transparent 20px
+        );
+        z-index: -1; /* Detrás del contenido principal */
     }
 
-    /* Estilo del título de la galería */
-    .gallery-title {
-        font-size: 1.6rem;
-        font-weight: bold;
-        color: #4d4033; /* Café oscuro más cálido */
-        background: linear-gradient(135deg, #f9f3eb, #eae0d5); /* Degradado sutil */
-        padding: 15px 30px;
-        border-radius: 30px; /* Bordes redondeados estilo óvalo */
-        box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1); /* Sombra más pronunciada */
-        transition: transform 0.3s ease; /* Animación al pasar el mouse */
+    .photo-gallery::before {
+        left: 0;
     }
 
-    /* Hover en el título */
-    .gallery-title:hover {
-        transform: scale(1.05); /* Aumenta ligeramente al pasar el mouse */
+    .photo-gallery::after {
+        right: 0;
     }
 </style>
 
@@ -238,8 +268,6 @@
     }
 </script>
 
-
-        
         
         <footer class="footer text-faded text-center py-5">
             <div class="container"><p class="m-0 small">Copyright &copy; todos los derechos reservador a "La Inge" 2025</p></div>
