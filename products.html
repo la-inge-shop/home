@@ -90,6 +90,147 @@
                 </div>
             </div>
         </section>
+
+        <!-- Galería de fotos -->
+<section class="photo-gallery">
+    <div class="gallery-container">
+        <!-- Imagen principal -->
+        <img id="gallery-image" src="assets/img/photogalery1.jpg" alt="Galería de fotos" class="gallery-image">
+
+        <!-- Botones de navegación -->
+        <button class="gallery-button prev" onclick="changeImage(-1)">&#10094;</button>
+        <button class="gallery-button next" onclick="changeImage(1)">&#10095;</button>
+    </div>
+
+    <!-- Título de la galería -->
+    <div class="gallery-title-container">
+        <h2 class="gallery-title">Más productos y nuestros procesos</h2>
+    </div>
+</section>
+
+<style>
+    /* Estilo general de la galería */
+    .photo-gallery {
+        width: 100%;
+        padding: 60px 0; /* Espaciado superior e inferior aumentado */
+        background: linear-gradient(135deg, #f8f9fa, #eae0d5); /* Degradado sutil */
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* Contenedor de la galería */
+    .gallery-container {
+        position: relative;
+        display: inline-block;
+        max-width: 600px; /* Ancho máximo de la imagen */
+        margin: 0 auto; /* Centrado horizontal */
+        border-radius: 15px; /* Bordes redondeados más pronunciados */
+        overflow: hidden; /* Para que las esquinas redondeadas se apliquen correctamente */
+        box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1); /* Sombra más pronunciada */
+    }
+
+    /* Estilo de la imagen */
+    .gallery-image {
+        width: 100%;
+        height: auto;
+        border-radius: 15px; /* Bordes redondeados */
+        transition: transform 0.3s ease; /* Animación al pasar el mouse */
+    }
+
+    /* Hover en la imagen (efecto de zoom) */
+    .gallery-image:hover {
+        transform: scale(1.05); /* Aumenta ligeramente al pasar el mouse */
+    }
+
+    /* Estilo de los botones de navegación */
+    .gallery-button {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: rgba(0, 0, 0, 0.6); /* Fondo semi-transparente más oscuro */
+        color: white;
+        border: none;
+        font-size: 24px;
+        font-weight: bold;
+        padding: 12px 18px;
+        border-radius: 50%; /* Forma circular */
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.3s ease; /* Transición suave */
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Sombra ligera */
+    }
+
+    /* Posicionamiento de los botones */
+    .gallery-button.prev {
+        left: 15px;
+    }
+
+    .gallery-button.next {
+        right: 15px;
+    }
+
+    /* Hover en los botones */
+    .gallery-button:hover {
+        background-color: rgba(0, 0, 0, 0.8); /* Fondo más oscuro al pasar el mouse */
+        transform: scale(1.1); /* Efecto de agrandar */
+    }
+
+    /* Estilo del contenedor del título */
+    .gallery-title-container {
+        margin-top: 30px; /* Espaciado entre la galería y el título */
+        position: relative;
+        display: inline-block;
+    }
+
+    /* Estilo del título de la galería */
+    .gallery-title {
+        display: inline-block;
+        font-size: 1.6rem;
+        font-weight: bold;
+        color: #4d4033; /* Café oscuro más cálido */
+        background: linear-gradient(135deg, #f9f3eb, #eae0d5); /* Degradado sutil */
+        padding: 15px 30px;
+        border-radius: 30px; /* Bordes redondeados estilo óvalo */
+        box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1); /* Sombra más pronunciada */
+        transition: transform 0.3s ease; /* Animación al pasar el mouse */
+    }
+
+    /* Hover en el título */
+    .gallery-title:hover {
+        transform: scale(1.05); /* Aumenta ligeramente al pasar el mouse */
+    }
+</style>
+
+<script>
+    // Lista de imágenes en la galería
+    const images = [
+        "assets/img/photogalery1.jpg",
+        "assets/img/photogalery2.jpg",
+        "assets/img/photogalery3.jpg",
+        "assets/img/photogalery4.jpg",
+        "assets/img/photogalery5.jpg",
+        "assets/img/photogalery6.jpg"
+    ];
+
+    let currentIndex = 0; // Índice actual de la imagen mostrada
+
+    // Función para cambiar de imagen
+    function changeImage(step) {
+        currentIndex += step;
+
+        // Reiniciar al llegar al final o al principio
+        if (currentIndex >= images.length) {
+            currentIndex = 0; // Volver a la primera imagen
+        } else if (currentIndex < 0) {
+            currentIndex = images.length - 1; // Ir a la última imagen
+        }
+
+        // Actualizar la imagen mostrada
+        document.getElementById("gallery-image").src = images[currentIndex];
+    }
+</script>
+
+        
         <footer class="footer text-faded text-center py-5">
             <div class="container"><p class="m-0 small">Copyright &copy; todos los derechos reservador a "La Inge" 2025</p></div>
         </footer>
