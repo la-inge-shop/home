@@ -92,7 +92,7 @@
         </section>
 
 
-        <!-- Galería de fotos -->
+       <!-- Galería de fotos -->
 <section class="photo-gallery">
     <!-- Título de la galería -->
     <div class="gallery-title-container">
@@ -117,7 +117,7 @@
     .photo-gallery {
         width: 100%;
         padding: 60px 0; /* Espaciado superior e inferior aumentado */
-        background: linear-gradient(135deg, #f6e1c5, #eae0d5); /* Degradado con el nuevo color */
+        background-color: transparent; /* Fondo transparente */
         text-align: center;
         position: relative;
         overflow: hidden;
@@ -133,12 +133,13 @@
         font-size: 1.6rem;
         font-weight: bold;
         color: #4d4033; /* Café oscuro más cálido */
-        background-color: #f6e1c5; /* Nuevo color de fondo */
+        background-color: #f6e1c5; /* Color beige claro */
         padding: 15px 30px;
         border-radius: 30px; /* Bordes redondeados estilo óvalo */
         box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1); /* Sombra más pronunciada */
         display: inline-block;
         transition: transform 0.3s ease; /* Animación al pasar el mouse */
+        border: 2px dashed #bcaaa4; /* Borde punteado suave */
     }
 
     /* Hover en el título */
@@ -162,7 +163,7 @@
         overflow: hidden; /* Recorta cualquier contenido que exceda el tamaño */
         border-radius: 15px; /* Bordes redondeados */
         box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1); /* Sombra más pronunciada */
-        background-color: #f6e1c5; /* Nuevo color de fondo */
+        background-color: #f6e1c5; /* Color beige claro */
     }
 
     /* Estilo de la imagen */
@@ -267,7 +268,7 @@
         document.getElementById("gallery-image").src = images[currentIndex];
     }
 </script>
-
+        
         
         <footer class="footer text-faded text-center py-5">
             <div class="container"><p class="m-0 small">Copyright &copy; todos los derechos reservador a "La Inge" 2025</p></div>
