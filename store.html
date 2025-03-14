@@ -98,6 +98,55 @@
                 </div>
             </div>
         </section>
+
+        <!-- Título del mapa -->
+<h2 class="map-title">Envíos Gratis en la zona seleccionada!</h2>
+
+<!-- Mapa interactivo -->
+<div class="map-container">
+    <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14930.760678180556!2d-98.9308916884277!3d19.03071992789919!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85cd90b6e7b9c73f%3A0x7b8f6bb8b65a3238!2sIxtapaluca%2C%20M%C3%A9x.!5e0!3m2!1ses!2smx!4v1700000000000!5m2!1ses!2smx" 
+        width="100%" 
+        height="450" 
+        style="border:0;" 
+        allowfullscreen="" 
+        loading="lazy" 
+        referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+</div>
+
+<style>
+    /* Estilo del título del mapa */
+    .map-title {
+        font-size: 1.8rem;
+        font-weight: bold;
+        color: #4d4033; /* Café oscuro más cálido */
+        background-color: #f6e1c5; /* Fondo beige claro */
+        padding: 15px 30px;
+        border: 2px dashed #bcaaa4; /* Borde punteado suave */
+        border-radius: 30px; /* Bordes redondeados estilo óvalo */
+        display: inline-block;
+        margin: 0 auto 20px auto; /* Centrado horizontal y espacio abajo */
+        text-align: center;
+        box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+        transition: transform 0.3s ease; /* Animación al pasar el mouse */
+    }
+
+    /* Hover en el título */
+    .map-title:hover {
+        transform: scale(1.05); /* Aumenta ligeramente al pasar el mouse */
+    }
+
+    /* Contenedor del mapa */
+    .map-container {
+        max-width: 100%;
+        margin: 0 auto;
+        border-radius: 15px; /* Bordes redondeados */
+        overflow: hidden;
+        box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+    }
+</style>
+        
         <section class="page-section about-heading">
             <div class="container">
                 <img class="img-fluid rounded about-heading-img mb-3 mb-lg-0" src="assets/img/about.jpg" alt="..." />
