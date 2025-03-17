@@ -1,3 +1,15 @@
+/*!
+* Start Bootstrap - Business Casual v7.0.9 (https://startbootstrap.com/theme/business-casual)
+* Copyright 2013-2023 Start Bootstrap
+* Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-business-casual/blob/master/LICENSE)
+*/
+
+// Resalta la fecha actual en la página de contacto
+window.addEventListener('DOMContentLoaded', event => {
+    const listHoursArray = document.body.querySelectorAll('.list-hours li');
+    listHoursArray[new Date().getDay()].classList.add(('today'));
+});
+
 // Contador de visitas con JSONBin
 const JSONBIN_URL = "https://api.jsonbin.io/v3/b/67d223698561e97a50ead685"; // Reemplaza con tu Bin ID
 const JSONBIN_HEADERS = {
@@ -37,7 +49,7 @@ async function updateVisits(currentVisits) {
 // Inicializar el contador de visitas
 fetchVisits();
 
-// Controlar el scroll automático entre secciones
+// Scroll automático entre secciones
 let currentSectionIndex = 0;
 const sections = document.querySelectorAll('.section');
 
