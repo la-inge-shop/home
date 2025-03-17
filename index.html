@@ -1,20 +1,48 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>La Inge Shop</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet" />
+  <!-- Core Theme CSS -->
+  <link href="css/styles.css" rel="stylesheet" />
+  <!-- Estilos adicionales -->
+  <style>
+    /* Estilo para el contador de visitas */
+    .footer-counter {
+      margin-top: 10px;
+      font-size: 0.9rem;
+      color: #6c757d;
+    }
+  </style>
 </head>
 <body>
+  <!-- Encabezado -->
+  <header>
+    <h1 class="site-heading text-center text-faded d-none d-lg-block">
+      <span class="site-heading-upper text-primary mb-3">Comida 100% Natural, sin conservadores.</span>
+      <span class="site-heading-lower">- La Inge -</span>
+    </h1>
+  </header>
+
   <!-- Barra de navegación -->
-  <nav id="navbar">
-    <div class="logo">La Inge Shop</div>
-    <ul class="nav-links">
-      <li><a href="#home">Hogar</a></li>
-      <li><a href="#contacto">Contacto</a></li>
-    </ul>
+  <nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand text-uppercase fw-bold d-lg-none" href="#home">-La Inge-</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="#home">Hogar</a></li>
+          <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="#contacto">Contacto</a></li>
+        </ul>
+      </div>
+    </div>
   </nav>
 
   <!-- Sección de Hogar -->
@@ -33,6 +61,13 @@
       <p>Descubre cómo creamos productos artesanales con ingredientes frescos y locales.</p>
       <div class="image-container">
         <img src="assets/img/products-03.png" alt="Nuestra Cocina">
+      </div>
+      <div class="product-item-description d-flex me-auto">
+        <div class="bg-faded p-5 rounded">
+          <p class="mb-0">
+            ¡Descubre lo mejor de lo natural!: Quesos artesanales (Panela, Botanero, Manchego, Oaxaca, Amarillo y Requesón), semillas tostadas (cacahuates, girasol, pepitas, nuez, almendras y ajonjolí garapiñado), salsas macha llenas de sabor y rompope tradicional. Elaborados con ingredientes 100% puros, sin colorantes, sin conservadores y sin químicos. Sabores auténticos, directos a tu hogar.🧀✨
+          </p>
+        </div>
       </div>
     </div>
   </section>
@@ -63,9 +98,9 @@
   </section>
 
   <!-- Footer -->
-  <footer>
+  <footer class="footer text-faded text-center py-5">
     <div class="container">
-      <p class="m-0 small">Copyright &copy; todos los derechos reservados a "La Inge" 2025</p>
+      <p class="m-0 small">Copyright &copy; Todos los derechos reservados a "La Inge" 2025</p>
       <div class="footer-counter" id="counter">Visitas: Cargando...</div>
     </div>
   </footer>
@@ -76,12 +111,87 @@
   </a>
 
   <!-- Botón de Facebook -->
-  <a href="https://www.facebook.com/tupagina" target="_blank" class="facebook-button">
+  <a href="https://www.facebook.com/people/La-inge/61566649090443/" target="_blank" class="facebook-button">
     <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook">
   </a>
 
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="scripts.js"></script>
+  <script src="//code.tidio.co/ojjfibvideqfj4fweendan3qxq1o42yj.js" async></script>
+  <script>
+    // Contador de visitas
+    const JSONBIN_URL = "https://api.jsonbin.io/v3/b/60e4d8bfa7c8f76d8c8c8c8c";
+    const JSONBIN_HEADERS = {
+      "X-Master-Key": "$2a$10$gXAeMiY4L81C8vAEsVxN6uA/EQ.T/h80zTtFsLAoYMahNWGQYlnHq"
+    };
+    const counterElement = document.getElementById('counter');
+
+    async function fetchVisits() {
+      try {
+        counterElement.textContent = "Visitas: Cargando...";
+        const response = await fetch(JSONBIN_URL, { method: "GET", headers: JSONBIN_HEADERS });
+        if (!response.ok) throw new Error(`Error HTTP: ${response.status}`);
+        const data = await response.json();
+        const visits = data.record.visits || 0;
+        counterElement.textContent = `Visitas: ${visits}`;
+        updateVisits(visits);
+      } catch (error) {
+        console.error("Error al obtener las visitas:", error.message);
+        counterElement.textContent = "Visitas: Error";
+      }
+    }
+
+    async function updateVisits(currentVisits) {
+      const newVisits = parseInt(currentVisits) + 1;
+      try {
+        await fetch(JSONBIN_URL, { method: "PUT", headers: JSONBIN_HEADERS, body: JSON.stringify({ visits: newVisits }) });
+      } catch (error) {
+        console.error("Error al actualizar las visitas:", error.message);
+      }
+    }
+
+    fetchVisits();
+
+    // Scroll automático entre secciones
+    let currentSectionIndex = 0;
+    const sections = document.querySelectorAll('.section');
+
+    function scrollToSection(index) {
+      if (index >= 0 && index < sections.length) {
+        currentSectionIndex = index;
+        sections[currentSectionIndex].scrollIntoView({ behavior: 'smooth' });
+        activateAnimations();
+      }
+    }
+
+    function activateAnimations() {
+      sections.forEach((section, index) => {
+        const content = section.querySelector('.content');
+        if (index === currentSectionIndex) {
+          content.classList.add('active');
+        } else {
+          content.classList.remove('active');
+        }
+      });
+    }
+
+    let isScrolling = false;
+
+    document.addEventListener('wheel', (event) => {
+      if (isScrolling) return;
+      isScrolling = true;
+      setTimeout(() => (isScrolling = false), 800);
+
+      if (event.deltaY > 0) {
+        scrollToSection(currentSectionIndex + 1);
+      } else {
+        scrollToSection(currentSectionIndex - 1);
+      }
+    });
+
+    window.addEventListener('load', () => {
+      activateAnimations();
+    });
+  </script>
 </body>
 </html>
