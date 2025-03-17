@@ -20,7 +20,7 @@ body {
 /* Barra de navegación */
 nav {
   background-color: #3c2814; /* Café oscuro intenso */
-  padding: 15px 30px; /* Incrementar el padding */
+  padding: 20px 40px; /* Padding incrementado */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -32,65 +32,18 @@ nav {
 }
 
 .navbar-brand {
-  font-size: 2.25rem; /* Tamaño del título incrementado */
+  font-size: 3rem; /* Tamaño del título incrementado */
   font-weight: bold;
   color: #FFDEAD; /* Beige claro */
   text-decoration: none;
-  margin-left: 15px;
+  margin-left: 20px;
   cursor: pointer;
 }
 
-.navbar-toggler {
-  background-color: transparent; /* Sin fondo */
-  border: none;
-  padding: 10px; /* Incrementar el padding */
+.menu-icon {
+  width: 60px; /* Tamaño de la imagen de la hamburguesa */
+  height: 60px; /* Tamaño de la imagen de la hamburguesa */
   cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 50px; /* Ancho incrementado */
-  height: 40px; /* Alto incrementado */
-}
-
-.navbar-toggler-icon {
-  display: block;
-  width: 100%;
-  height: 6px; /* Grosor de las rallitas incrementado */
-  background-color: #FFDEAD; /* Color beige */
-  transition: all 0.3s ease;
-}
-
-.navbar-toggler-icon::before,
-.navbar-toggler-icon::after {
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 6px; /* Grosor de las rallitas incrementado */
-  background-color: #FFDEAD; /* Color beige */
-  left: 0;
-  transition: all 0.3s ease;
-}
-
-.navbar-toggler-icon::before {
-  top: -12px; /* Espaciado entre las rallitas incrementado */
-}
-
-.navbar-toggler-icon::after {
-  top: 12px; /* Espaciado entre las rallitas incrementado */
-}
-
-.navbar-toggler.active .navbar-toggler-icon {
-  background-color: transparent;
-}
-
-.navbar-toggler.active .navbar-toggler-icon::before {
-  top: 0;
-  transform: rotate(45deg);
-}
-
-.navbar-toggler.active .navbar-toggler-icon::after {
-  top: 0;
-  transform: rotate(-45deg);
 }
 
 .navbar-nav {
@@ -105,19 +58,19 @@ nav {
 }
 
 .navbar-nav.open {
-  max-height: 450px; /* Altura incrementada */
+  max-height: 600px; /* Altura incrementada */
   opacity: 1;
 }
 
 .navbar-nav li {
-  margin: 15px 0; /* Espaciado incrementado */
+  margin: 20px 0; /* Espaciado incrementado */
 }
 
 .navbar-nav a {
   text-decoration: none;
   color: #FFDEAD; /* Beige claro */
   font-weight: bold;
-  font-size: 1.5rem; /* Tamaño de fuente incrementado */
+  font-size: 2rem; /* Tamaño de fuente incrementado */
   transition: color 0.3s ease, transform 0.3s ease;
 }
 
@@ -129,26 +82,26 @@ nav {
 /* Contenido principal */
 .content {
   text-align: center;
-  padding: 150px 30px; /* Padding incrementado */
+  padding: 150px 40px; /* Padding incrementado */
 }
 
 .content h1 {
-  font-size: 4.5rem; /* Tamaño incrementado */
-  margin-bottom: 30px; /* Espaciado incrementado */
+  font-size: 6rem; /* Tamaño incrementado */
+  margin-bottom: 40px; /* Espaciado incrementado */
 }
 
 .content p {
-  font-size: 1.8rem; /* Tamaño incrementado */
-  margin-bottom: 60px; /* Espaciado incrementado */
+  font-size: 2.4rem; /* Tamaño incrementado */
+  margin-bottom: 80px; /* Espaciado incrementado */
 }
 
 .cta-button {
-  padding: 15px 30px; /* Padding incrementado */
+  padding: 20px 40px; /* Padding incrementado */
   background-color: #FFDEAD; /* Beige claro */
   color: #3c2814; /* Café oscuro intenso */
   border: none;
-  border-radius: 10px; /* Bordes redondeados incrementados */
-  font-size: 1.5rem; /* Tamaño incrementado */
+  border-radius: 15px; /* Bordes redondeados incrementados */
+  font-size: 2rem; /* Tamaño incrementado */
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
@@ -163,29 +116,29 @@ footer {
   background-color: #3c2814; /* Café oscuro intenso */
   color: #fff;
   text-align: center;
-  padding: 30px; /* Padding incrementado */
+  padding: 40px; /* Padding incrementado */
   position: relative;
   bottom: 0;
   width: 100%;
 }
 
 footer p {
-  font-size: 1.35rem; /* Tamaño incrementado */
+  font-size: 2rem; /* Tamaño incrementado */
 }
 
 .footer-counter {
-  margin-top: 15px; /* Espaciado incrementado */
-  font-size: 1.35rem; /* Tamaño incrementado */
+  margin-top: 20px; /* Espaciado incrementado */
+  font-size: 2rem; /* Tamaño incrementado */
   color: #FFDEAD;
 }
 
 /* Botón de WhatsApp */
 .whatsapp-button {
   position: fixed;
-  bottom: 30px; /* Distancia incrementada */
-  left: 30px; /* Distancia incrementada */
-  width: 90px; /* Tamaño incrementado */
-  height: 90px; /* Tamaño incrementado */
+  bottom: 40px; /* Distancia incrementada */
+  left: 40px; /* Distancia incrementada */
+  width: 100px; /* Tamaño incrementado */
+  height: 100px; /* Tamaño incrementado */
   background-color: #25D366;
   color: white;
   border-radius: 50%;
@@ -193,23 +146,23 @@ footer p {
   align-items: center;
   justify-content: center;
   text-decoration: none;
-  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2); /* Sombra incrementada */
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2); /* Sombra incrementada */
   z-index: 1000;
   animation: pulse 1.5s infinite;
 }
 
 .whatsapp-button img {
-  width: 54px; /* Tamaño incrementado */
-  height: 54px; /* Tamaño incrementado */
+  width: 60px; /* Tamaño incrementado */
+  height: 60px; /* Tamaño incrementado */
 }
 
 /* Botón de Facebook */
 .facebook-button {
   position: fixed;
-  bottom: 135px; /* Distancia incrementada */
-  left: 30px; /* Distancia incrementada */
-  width: 75px; /* Tamaño incrementado */
-  height: 75px; /* Tamaño incrementado */
+  bottom: 160px; /* Distancia incrementada */
+  left: 40px; /* Distancia incrementada */
+  width: 80px; /* Tamaño incrementado */
+  height: 80px; /* Tamaño incrementado */
   background-color: #1877F2;
   color: white;
   border-radius: 50%;
@@ -217,13 +170,13 @@ footer p {
   align-items: center;
   justify-content: center;
   text-decoration: none;
-  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2); /* Sombra incrementada */
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2); /* Sombra incrementada */
   z-index: 1000;
 }
 
 .facebook-button img {
-  width: 36px; /* Tamaño incrementado */
-  height: 36px; /* Tamaño incrementado */
+  width: 48px; /* Tamaño incrementado */
+  height: 48px; /* Tamaño incrementado */
 }
 
 /* Animación de pulsación */
@@ -247,7 +200,7 @@ footer p {
     opacity: 0;
   }
 
-  .navbar-toggler {
+  .menu-icon {
     display: block;
   }
 }
