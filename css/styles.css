@@ -14,12 +14,13 @@ body {
   background-attachment: fixed;
   color: #fff;
   scroll-behavior: smooth;
+  font-size: 1.5rem; /* Incrementar el tamaño de fuente global */
 }
 
 /* Barra de navegación */
 nav {
   background-color: #3c2814; /* Café oscuro intenso */
-  padding: 10px 20px;
+  padding: 15px 30px; /* Incrementar el padding */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -31,30 +32,30 @@ nav {
 }
 
 .navbar-brand {
-  font-size: 1.5rem; /* Tamaño del título */
+  font-size: 2.25rem; /* Tamaño del título incrementado */
   font-weight: bold;
   color: #FFDEAD; /* Beige claro */
   text-decoration: none;
-  margin-left: 10px;
+  margin-left: 15px;
   cursor: pointer;
 }
 
 .navbar-toggler {
   background-color: transparent; /* Sin fondo */
   border: none;
-  padding: 5px;
+  padding: 10px; /* Incrementar el padding */
   cursor: pointer;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 35px; /* Ancho ajustado */
-  height: 30px; /* Alto ajustado */
+  width: 50px; /* Ancho incrementado */
+  height: 40px; /* Alto incrementado */
 }
 
 .navbar-toggler-icon {
   display: block;
   width: 100%;
-  height: 4px; /* Grosor de las rallitas aumentado */
+  height: 6px; /* Grosor de las rallitas incrementado */
   background-color: #FFDEAD; /* Color beige */
   transition: all 0.3s ease;
 }
@@ -64,18 +65,18 @@ nav {
   content: '';
   position: absolute;
   width: 100%;
-  height: 4px; /* Grosor de las rallitas aumentado */
+  height: 6px; /* Grosor de las rallitas incrementado */
   background-color: #FFDEAD; /* Color beige */
   left: 0;
   transition: all 0.3s ease;
 }
 
 .navbar-toggler-icon::before {
-  top: -10px; /* Espaciado entre las rallitas */
+  top: -12px; /* Espaciado entre las rallitas incrementado */
 }
 
 .navbar-toggler-icon::after {
-  top: 10px; /* Espaciado entre las rallitas */
+  top: 12px; /* Espaciado entre las rallitas incrementado */
 }
 
 .navbar-toggler.active .navbar-toggler-icon {
@@ -104,19 +105,19 @@ nav {
 }
 
 .navbar-nav.open {
-  max-height: 300px; /* Ajustado para más opciones */
+  max-height: 450px; /* Altura incrementada */
   opacity: 1;
 }
 
 .navbar-nav li {
-  margin: 10px 0;
+  margin: 15px 0; /* Espaciado incrementado */
 }
 
 .navbar-nav a {
   text-decoration: none;
   color: #FFDEAD; /* Beige claro */
   font-weight: bold;
-  font-size: 1rem;
+  font-size: 1.5rem; /* Tamaño de fuente incrementado */
   transition: color 0.3s ease, transform 0.3s ease;
 }
 
@@ -128,26 +129,26 @@ nav {
 /* Contenido principal */
 .content {
   text-align: center;
-  padding: 100px 20px;
+  padding: 150px 30px; /* Padding incrementado */
 }
 
 .content h1 {
-  font-size: 3rem;
-  margin-bottom: 20px;
+  font-size: 4.5rem; /* Tamaño incrementado */
+  margin-bottom: 30px; /* Espaciado incrementado */
 }
 
 .content p {
-  font-size: 1.2rem;
-  margin-bottom: 40px;
+  font-size: 1.8rem; /* Tamaño incrementado */
+  margin-bottom: 60px; /* Espaciado incrementado */
 }
 
 .cta-button {
-  padding: 10px 20px;
+  padding: 15px 30px; /* Padding incrementado */
   background-color: #FFDEAD; /* Beige claro */
   color: #3c2814; /* Café oscuro intenso */
   border: none;
-  border-radius: 5px;
-  font-size: 1rem;
+  border-radius: 10px; /* Bordes redondeados incrementados */
+  font-size: 1.5rem; /* Tamaño incrementado */
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
@@ -162,29 +163,29 @@ footer {
   background-color: #3c2814; /* Café oscuro intenso */
   color: #fff;
   text-align: center;
-  padding: 20px;
+  padding: 30px; /* Padding incrementado */
   position: relative;
   bottom: 0;
   width: 100%;
 }
 
 footer p {
-  font-size: 0.9rem;
+  font-size: 1.35rem; /* Tamaño incrementado */
 }
 
 .footer-counter {
-  margin-top: 10px;
-  font-size: 0.9rem;
+  margin-top: 15px; /* Espaciado incrementado */
+  font-size: 1.35rem; /* Tamaño incrementado */
   color: #FFDEAD;
 }
 
 /* Botón de WhatsApp */
 .whatsapp-button {
   position: fixed;
-  bottom: 20px;
-  left: 20px;
-  width: 60px;
-  height: 60px;
+  bottom: 30px; /* Distancia incrementada */
+  left: 30px; /* Distancia incrementada */
+  width: 90px; /* Tamaño incrementado */
+  height: 90px; /* Tamaño incrementado */
   background-color: #25D366;
   color: white;
   border-radius: 50%;
@@ -192,23 +193,23 @@ footer p {
   align-items: center;
   justify-content: center;
   text-decoration: none;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2); /* Sombra incrementada */
   z-index: 1000;
   animation: pulse 1.5s infinite;
 }
 
 .whatsapp-button img {
-  width: 36px;
-  height: 36px;
+  width: 54px; /* Tamaño incrementado */
+  height: 54px; /* Tamaño incrementado */
 }
 
 /* Botón de Facebook */
 .facebook-button {
   position: fixed;
-  bottom: 90px;
-  left: 20px;
-  width: 50px;
-  height: 50px;
+  bottom: 135px; /* Distancia incrementada */
+  left: 30px; /* Distancia incrementada */
+  width: 75px; /* Tamaño incrementado */
+  height: 75px; /* Tamaño incrementado */
   background-color: #1877F2;
   color: white;
   border-radius: 50%;
@@ -216,13 +217,13 @@ footer p {
   align-items: center;
   justify-content: center;
   text-decoration: none;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2); /* Sombra incrementada */
   z-index: 1000;
 }
 
 .facebook-button img {
-  width: 24px;
-  height: 24px;
+  width: 36px; /* Tamaño incrementado */
+  height: 36px; /* Tamaño incrementado */
 }
 
 /* Animación de pulsación */
