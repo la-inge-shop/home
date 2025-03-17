@@ -93,7 +93,7 @@ nav {
 }
 
 .navbar-nav.open {
-  max-height: 200px; /* Ajusta según el contenido */
+  max-height: 300px; /* Ajustado para más opciones */
   opacity: 1;
 }
 
