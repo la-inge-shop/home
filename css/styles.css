@@ -19,7 +19,8 @@ body {
 
 /* Barra de navegación */
 nav {
-  background-color: #3c2814; /* Café oscuro intenso */
+  position: relative;
+  background-color: transparent; /* Sin fondo */
   padding: 15px 30px; /* Padding ajustado */
   display: flex;
   justify-content: space-between;
@@ -47,19 +48,25 @@ nav {
 }
 
 .navbar-nav {
-  display: flex;
+  position: absolute;
+  top: 100%; /* Justo debajo del título */
+  left: 0;
+  width: 100%;
+  background-color: #3c2814; /* Café oscuro intenso */
   list-style: none;
   margin: 0;
   padding: 0;
-  transition: max-height 0.5s ease, opacity 0.5s ease;
   overflow: hidden;
   max-height: 0;
   opacity: 0;
+  transition: max-height 0.5s ease, opacity 0.5s ease, transform 0.5s ease;
+  transform: translateY(-20px); /* Efecto inicial hacia arriba */
 }
 
 .navbar-nav.open {
-  max-height: 600px; /* Altura incrementada */
+  max-height: 300px; /* Altura suficiente para mostrar el menú */
   opacity: 1;
+  transform: translateY(0); /* Animación hacia abajo */
 }
 
 .navbar-nav li {
@@ -71,6 +78,8 @@ nav {
   color: #FFDEAD; /* Beige claro */
   font-weight: bold;
   font-size: 1.8rem; /* Tamaño de fuente ajustado */
+  padding: 10px 20px;
+  display: block;
   transition: color 0.3s ease, transform 0.3s ease;
 }
 
