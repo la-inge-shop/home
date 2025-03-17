@@ -6,13 +6,14 @@
 }
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Raleway', Arial, sans-serif;
   line-height: 1.6;
   background-image: linear-gradient(rgba(60, 40, 20, 0.8), rgba(60, 40, 20, 0.8)), url('../assets/img/bg.jpg');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
   color: #fff;
+  scroll-behavior: smooth;
 }
 
 /* Barra de navegación */
@@ -158,6 +159,12 @@ footer {
 
 footer p {
   font-size: 0.9rem;
+}
+
+.footer-counter {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: #FFDEAD;
 }
 
 /* Botón de WhatsApp */
