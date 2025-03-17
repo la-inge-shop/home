@@ -1,19 +1,95 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <meta name="description" content="" />
-  <meta name="author" content="" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>La Inge Shop</title>
-  <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-  <!-- Google fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet" />
+  <!-- Estilos CSS -->
   <style>
-    /* Scroll suave */
+    /* Reset básico */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
-      scroll-behavior: smooth;
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      background-image: linear-gradient(rgba(139, 69, 19, 0.7), rgba(139, 69, 19, 0.7)), url('assets/img/bg.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      color: #fff;
+    }
+
+    /* Barra de navegación */
+    nav {
+      background-color: #8B4513; /* Café oscuro */
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #fff;
+      font-weight: bold;
+      margin: 0 10px;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #FFDEAD; /* Beige claro */
+      transform: scale(1.1);
+    }
+
+    /* Contenido principal */
+    .content {
+      text-align: center;
+      padding: 100px 20px;
+    }
+
+    .content h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+
+    .content p {
+      font-size: 1.2rem;
+      margin-bottom: 40px;
+    }
+
+    .cta-button {
+      padding: 10px 20px;
+      background-color: #FFDEAD; /* Beige claro */
+      color: #8B4513; /* Café oscuro */
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .cta-button:hover {
+      background-color: #D2B48C; /* Beige más oscuro */
+      transform: scale(1.1);
+    }
+
+    /* Pie de página */
+    footer {
+      background-color: #8B4513; /* Café oscuro */
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+      position: relative;
+      bottom: 0;
+      width: 100%;
+    }
+
+    footer p {
+      font-size: 0.9rem;
     }
 
     /* Botón de WhatsApp */
@@ -79,160 +155,34 @@
 </head>
 <body>
   <!-- Barra de navegación -->
-  <nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav">
-    <div class="container">
-      <a class="navbar-brand text-uppercase fw-bold d-lg-none" href="#home">-La Inge-</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mx-auto">
-          <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="#home">Hogar</a></li>
-          <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="#contacto">Contacto</a></li>
-        </ul>
-      </div>
+  <nav>
+    <div class="logo">
+      <a href="#home">La Inge Shop</a>
     </div>
+    <ul style="list-style: none; display: flex;">
+      <li><a href="#home">Hogar</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
   </nav>
 
-  <!-- Sección de Hogar -->
-  <section id="home" class="section page-section clearfix">
-    <div class="content fade-in-up">
-      <div class="container">
-        <div class="intro">
-          <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="assets/img/intro.jpg" alt="..." />
-          <div class="intro-text left-0 text-center bg-faded p-5 rounded">
-            <h2 class="section-heading mb-4">
-              <span class="section-heading-upper">Bienvenido a La Inge Shop</span>
-              <span class="section-heading-lower">Productos Naturales</span>
-            </h2>
-            <p class="mb-3">Tu fuente de productos naturales y deliciosos.</p>
-            <button class="cta-button">Explorar Productos</button>
-          </div>
-        </div>
-      </div>
-    </div>
+  <!-- Contenido principal -->
+  <section id="home" class="content">
+    <h1>Bienvenido a La Inge Shop</h1>
+    <p>Tu fuente de productos naturales y deliciosos.</p>
+    <button class="cta-button">Explorar Productos</button>
   </section>
 
-  <!-- Sección de Contacto -->
-  <section id="contacto" class="section page-section">
-    <div class="content fade-in-down">
-      <div class="container">
-        <div class="bg-faded p-5 rounded">
-          <h2 class="section-heading mb-4">
-            <span class="section-heading-upper">Contáctenos</span>
-            <span class="section-heading-lower">Estamos aquí para ayudarte</span>
-          </h2>
-          <p class="mb-3">¿Tienes preguntas? Contáctanos y estaremos encantados de ayudarte.</p>
-          <form class="contact-form">
-            <input type="text" placeholder="Nombre" required />
-            <input type="email" placeholder="Correo Electrónico" required />
-            <textarea placeholder="Mensaje"></textarea>
-            <button type="submit">Enviar</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="footer text-faded text-center py-5">
-    <div class="container">
-      <p class="m-0 small">Copyright &copy; Todos los derechos reservados a "La Inge" 2025</p>
-      <div class="footer-counter" id="counter">Visitas: Cargando...</div>
-    </div>
+  <!-- Pie de página -->
+  <footer>
+    <p>&copy; 2025 Todos los derechos reservados | La Inge Shop</p>
   </footer>
 
-  <!-- Botón de WhatsApp -->
+  <!-- Botones de WhatsApp y Facebook -->
   <a href="https://wa.me/5636046971?text=Hola!%20Quiero%20saber%20sus%20productos%20disponibles%20y%20su%20costo!%20🥰" target="_blank" class="whatsapp-button">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
   </a>
-
-  <!-- Botón de Facebook -->
   <a href="https://www.facebook.com/people/La-inge/61566649090443/" target="_blank" class="facebook-button">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook" />
+    <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook">
   </a>
-
-  <!-- Scripts -->
-  <script>
-    // Contador de visitas con JSONBin
-    const JSONBIN_URL = "https://api.jsonbin.io/v3/b/67d223698561e97a50ead685"; // Reemplaza con tu Bin ID
-    const JSONBIN_HEADERS = {
-      "Content-Type": "application/json",
-      "X-Master-Key": "$2a$10$gXAeMiY4L81C8vAEsVxN6uA/EQ.T/h80zTtFsLAoYMahNWGQYlnHq" // Reemplaza con tu Master Key
-    };
-    const counterElement = document.getElementById('counter');
-
-    async function fetchVisits() {
-      try {
-        counterElement.textContent = "Visitas: Cargando...";
-        const response = await fetch(JSONBIN_URL, { method: "GET", headers: JSONBIN_HEADERS });
-        if (!response.ok) throw new Error(`Error HTTP: ${response.status}`);
-        const data = await response.json();
-        const visits = data.record.visits || 0;
-        counterElement.textContent = `Visitas: ${visits}`;
-        updateVisits(visits);
-      } catch (error) {
-        console.error("Error al obtener las visitas:", error.message);
-        counterElement.textContent = "Visitas: Error";
-      }
-    }
-
-    async function updateVisits(currentVisits) {
-      const newVisits = parseInt(currentVisits) + 1;
-      try {
-        await fetch(JSONBIN_URL, {
-          method: "PUT",
-          headers: JSONBIN_HEADERS,
-          body: JSON.stringify({ visits: newVisits })
-        });
-      } catch (error) {
-        console.error("Error al actualizar las visitas:", error.message);
-      }
-    }
-
-    // Inicializar el contador de visitas
-    fetchVisits();
-
-    // Controlar el scroll automático entre secciones
-    let currentSectionIndex = 0;
-    const sections = document.querySelectorAll('.section');
-
-    function scrollToSection(index) {
-      if (index >= 0 && index < sections.length) {
-        currentSectionIndex = index;
-        sections[currentSectionIndex].scrollIntoView({ behavior: 'smooth' });
-        activateAnimations();
-      }
-    }
-
-    function activateAnimations() {
-      sections.forEach((section, index) => {
-        const content = section.querySelector('.content');
-        if (index === currentSectionIndex) {
-          content.classList.add('active');
-        } else {
-          content.classList.remove('active');
-        }
-      });
-    }
-
-    let isScrolling = false;
-
-    document.addEventListener('wheel', (event) => {
-      if (isScrolling) return;
-      isScrolling = true;
-      setTimeout(() => (isScrolling = false), 800);
-
-      if (event.deltaY > 0) {
-        scrollToSection(currentSectionIndex + 1);
-      } else {
-        scrollToSection(currentSectionIndex - 1);
-      }
-    });
-
-    window.addEventListener('load', () => {
-      activateAnimations();
-    });
-  </script>
 </body>
 </html>
