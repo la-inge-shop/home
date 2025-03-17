@@ -1,13 +1,10 @@
-/*!
-* Start Bootstrap - Business Casual v7.0.9 (https://startbootstrap.com/theme/business-casual)
-* Copyright 2013-2023 Start Bootstrap
-* Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-business-casual/blob/master/LICENSE)
-*/
+// Menú desplegable
+const menuToggle = document.getElementById('menuToggle');
+const navbarNav = document.getElementById('navbarNav');
 
-// Resalta la fecha actual en la página de contacto
-window.addEventListener('DOMContentLoaded', event => {
-    const listHoursArray = document.body.querySelectorAll('.list-hours li');
-    listHoursArray[new Date().getDay()].classList.add(('today'));
+menuToggle.addEventListener('click', () => {
+  menuToggle.classList.toggle('active');
+  navbarNav.classList.toggle('open');
 });
 
 // Contador de visitas con JSONBin
@@ -24,7 +21,7 @@ async function fetchVisits() {
     const response = await fetch(JSONBIN_URL, { method: "GET", headers: JSONBIN_HEADERS });
     if (!response.ok) throw new Error(`Error HTTP: ${response.status}`);
     const data = await response.json();
-    const visits = data.record.visits || 0; // Obtener el valor de "visits"
+    const visits = data.record.visits || 0;
     counterElement.textContent = `Visitas: ${visits}`;
     updateVisits(visits);
   } catch (error) {
@@ -48,47 +45,3 @@ async function updateVisits(currentVisits) {
 
 // Inicializar el contador de visitas
 fetchVisits();
-
-// Scroll automático entre secciones
-let currentSectionIndex = 0;
-const sections = document.querySelectorAll('.section');
-
-function scrollToSection(index) {
-  if (index >= 0 && index < sections.length) {
-    currentSectionIndex = index;
-    sections[currentSectionIndex].scrollIntoView({ behavior: 'smooth' });
-    activateAnimations();
-  }
-}
-
-function activateAnimations() {
-  sections.forEach((section, index) => {
-    const content = section.querySelector('.content');
-    if (index === currentSectionIndex) {
-      content.classList.add('active');
-    } else {
-      content.classList.remove('active');
-    }
-  });
-}
-
-let isScrolling = false;
-
-document.addEventListener('wheel', (event) => {
-  if (isScrolling) return;
-  isScrolling = true;
-  setTimeout(() => (isScrolling = false), 800); // Evitar múltiples scrolls rápidos
-
-  if (event.deltaY > 0) {
-    // Scroll hacia abajo
-    scrollToSection(currentSectionIndex + 1);
-  } else {
-    // Scroll hacia arriba
-    scrollToSection(currentSectionIndex - 1);
-  }
-});
-
-// Iniciar animaciones al cargar la página
-window.addEventListener('load', () => {
-  activateAnimations();
-});
