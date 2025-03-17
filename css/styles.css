@@ -32,17 +32,17 @@ nav {
 }
 
 .navbar-brand {
-  font-size: 3rem; /* Tamaño del título incrementado */
+  font-size: 3rem; /* Tamaño del título */
   font-weight: bold;
   color: #FFDEAD; /* Beige claro */
   text-decoration: none;
-  margin-left: 20px;
+  margin-left: 10px;
   cursor: pointer;
 }
 
 .menu-icon {
-  width: 60px; /* Tamaño de la imagen de la hamburguesa */
-  height: 60px; /* Tamaño de la imagen de la hamburguesa */
+  width: 40px; /* Tamaño reducido */
+  height: 40px; /* Tamaño reducido */
   cursor: pointer;
 }
 
