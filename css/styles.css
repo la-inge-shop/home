@@ -25,46 +25,57 @@ nav {
   align-items: center;
 }
 
+.navbar-container {
+  display: flex;
+  align-items: center;
+}
+
 .navbar-brand {
-  font-size: 1.5rem;
+  font-size: 1.5rem; /* Tamaño del título */
   font-weight: bold;
   color: #FFDEAD; /* Beige claro */
   text-decoration: none;
+  margin-left: 10px;
+  cursor: pointer;
 }
 
 .navbar-toggler {
   background-color: transparent; /* Sin fondo */
   border: none;
-  padding: 5px 10px;
+  padding: 5px;
   cursor: pointer;
-  display: none; /* Oculto en pantallas grandes */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 35px; /* Ancho ajustado */
+  height: 30px; /* Alto ajustado */
 }
 
 .navbar-toggler-icon {
   display: block;
-  width: 25px;
-  height: 3px;
+  width: 100%;
+  height: 4px; /* Grosor de las rallitas aumentado */
   background-color: #FFDEAD; /* Color beige */
-  position: relative;
+  transition: all 0.3s ease;
 }
 
 .navbar-toggler-icon::before,
 .navbar-toggler-icon::after {
   content: '';
   position: absolute;
-  width: 25px;
-  height: 3px;
+  width: 100%;
+  height: 4px; /* Grosor de las rallitas aumentado */
   background-color: #FFDEAD; /* Color beige */
   left: 0;
   transition: all 0.3s ease;
 }
 
 .navbar-toggler-icon::before {
-  top: -8px;
+  top: -10px; /* Espaciado entre las rallitas */
 }
 
 .navbar-toggler-icon::after {
-  top: 8px;
+  top: 10px; /* Espaciado entre las rallitas */
 }
 
 .navbar-toggler.active .navbar-toggler-icon {
