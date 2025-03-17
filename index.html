@@ -25,23 +25,100 @@
 
     /* Barra de navegación */
     nav {
-      background-color: #8B4513; /* Café oscuro */
+      background-color: #8B4513; /* Café oscuro intenso (color tierra) */
       padding: 10px 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
 
-    nav a {
-      text-decoration: none;
-      color: #fff;
+    .navbar-brand {
+      font-size: 1.5rem;
       font-weight: bold;
-      margin: 0 10px;
+      color: #FFDEAD; /* Beige claro */
+      text-decoration: none;
+    }
+
+    .navbar-toggler {
+      background-color: #FFDEAD; /* Beige claro */
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+      display: none; /* Oculto en pantallas grandes */
+    }
+
+    .navbar-toggler-icon {
+      display: block;
+      width: 25px;
+      height: 3px;
+      background-color: #8B4513;
+      position: relative;
+    }
+
+    .navbar-toggler-icon::before,
+    .navbar-toggler-icon::after {
+      content: '';
+      position: absolute;
+      width: 25px;
+      height: 3px;
+      background-color: #8B4513;
+      left: 0;
+      transition: all 0.3s ease;
+    }
+
+    .navbar-toggler-icon::before {
+      top: -8px;
+    }
+
+    .navbar-toggler-icon::after {
+      top: 8px;
+    }
+
+    /* Efecto de transformación al hacer clic */
+    .navbar-toggler.active .navbar-toggler-icon {
+      background-color: transparent;
+    }
+
+    .navbar-toggler.active .navbar-toggler-icon::before {
+      top: 0;
+      transform: rotate(45deg);
+    }
+
+    .navbar-toggler.active .navbar-toggler-icon::after {
+      top: 0;
+      transform: rotate(-45deg);
+    }
+
+    .navbar-nav {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      transition: max-height 0.5s ease, opacity 0.5s ease;
+      overflow: hidden;
+      max-height: 0;
+      opacity: 0;
+    }
+
+    .navbar-nav.open {
+      max-height: 200px; /* Ajusta según el contenido */
+      opacity: 1;
+    }
+
+    .navbar-nav li {
+      margin: 10px 0;
+    }
+
+    .navbar-nav a {
+      text-decoration: none;
+      color: #FFDEAD; /* Beige claro */
+      font-weight: bold;
+      font-size: 1rem;
       transition: color 0.3s ease, transform 0.3s ease;
     }
 
-    nav a:hover {
-      color: #FFDEAD; /* Beige claro */
+    .navbar-nav a:hover {
+      color: #D2B48C; /* Beige más oscuro */
       transform: scale(1.1);
     }
 
@@ -151,15 +228,29 @@
         transform: scale(1);
       }
     }
+
+    /* Media queries para pantallas pequeñas */
+    @media (max-width: 768px) {
+      .navbar-nav {
+        display: block;
+        max-height: 0;
+        opacity: 0;
+      }
+
+      .navbar-toggler {
+        display: block;
+      }
+    }
   </style>
 </head>
 <body>
   <!-- Barra de navegación -->
   <nav>
-    <div class="logo">
-      <a href="#home">La Inge Shop</a>
-    </div>
-    <ul style="list-style: none; display: flex;">
+    <a href="#" class="navbar-brand">La Inge Shop</a>
+    <button class="navbar-toggler" id="menuToggle">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <ul class="navbar-nav" id="navbarNav">
       <li><a href="#home">Hogar</a></li>
       <li><a href="#contacto">Contacto</a></li>
     </ul>
@@ -184,5 +275,16 @@
   <a href="https://www.facebook.com/people/La-inge/61566649090443/" target="_blank" class="facebook-button">
     <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook">
   </a>
+
+  <!-- Script para el menú desplegable -->
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const navbarNav = document.getElementById('navbarNav');
+
+    menuToggle.addEventListener('click', () => {
+      menuToggle.classList.toggle('active');
+      navbarNav.classList.toggle('open');
+    });
+  </script>
 </body>
 </html>
