@@ -1,224 +1,87 @@
+
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>La Inge Shop</title>
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-        <!-- Google fonts-->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
-        <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css/styles.css" rel="stylesheet" />
-        <style>
-            .footer-counter {
-                margin-top: 10px;
-                font-size: 0.9rem;
-                color: #6c757d;
-            }
-        </style>
-    </head>
-    <body>
-        <header>
-            <h1 class="site-heading text-center text-faded d-none d-lg-block">
-                <span class="site-heading-upper text-primary mb-3">Comida 100% Natural, sin conservadores.</span>
-                <span class="site-heading-lower">- La Inge -</span>
-            </h1>
-        </header>
-        <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav">
-            <div class="container">
-                <a class="navbar-brand text-uppercase fw-bold d-lg-none" href="index.html">-La Inge-</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mx-auto">
-                        <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="index.html">Hogar</a></li>
-                        <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="about.html">Acerca de</a></li>
-                        <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="products.html">Nuestra cocina</a></li>
-                        <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="store.html">Contacto!</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-        <section class="page-section clearfix">
-            <div class="container">
-                <div class="intro">
-                    <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="assets/img/intro.jpg" alt="..." />
-                    <div class="intro-text left-0 text-center bg-faded p-5 rounded">
-                        <h2 class="section-heading mb-4">
-                            <span class="section-heading-upper">Sabor natural, bienestar auténtico, ¡Ahora!. 🌱</span>
-                            <span class="section-heading-lower">¿Productos orgánicos?</span>
-                        </h2>
-                        <p class="mb-3">Los productos orgánicos son una opción saludable porque se cultivan y elaboran sin pesticidas, químicos ni conservadores artificiales. Al consumirlos, reduces la exposición a sustancias dañinas, fortaleces tu sistema inmunológico y disfrutas de alimentos con mayor valor nutricional. Elegir orgánico es elegir bienestar para ti y para el planeta.</p>
-                        <div class="intro-button mx-auto"><a class="btn btn-primary btn-xl" href="products.html">¡Dale sabor!</a></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="page-section cta">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-9 mx-auto">
-                        <div class="cta-inner bg-faded text-center rounded">
-                            <h2 class="section-heading mb-4">
-                                <span class="section-heading-upper">Nuestra Promesa</span>
-                                <span class="section-heading-lower">Para tí</span>
-                            </h2>
-                            <p class="mb-0">En cada producto que elaboramos, ponemos nuestro corazón y dedicación. Te prometemos ingredientes 100% naturales, libres de químicos y conservadores, porque creemos que tu salud y bienestar son lo más importante. Cada bocado es una muestra de nuestro compromiso contigo y con el medio ambiente. Confía en nosotros: aquí encontrarás calidad, sabor y el cuidado que tú y tu familia merecen.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <footer class="footer text-faded text-center py-5">
-            <div class="container">
-                <p class="m-0 small">Copyright &copy; todos los derechos reservador a "La Inge" 2025</p>
-                <div class="footer-counter" id="counter">Visitas: Cargando...</div>
-            </div>
-        </footer>
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
-        <script>
-            // Configuración de JSONBin
-            const JSONBIN_URL = "https://api.jsonbin.io/v3/b/67d223698561e97a50ead685"; // Reemplazado con tu Bin ID
-            const JSONBIN_HEADERS = {
-                "Content-Type": "application/json",
-                "X-Master-Key": "$2a$10$gXAeMiY4L81C8vAEsVxN6uA/EQ.T/h80zTtFsLAoYMahNWGQYlnHq" // Reemplazado con tu Master Key
-            };
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>La Inge Shop</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Barra de navegación -->
+  <nav id="navbar">
+    <div class="logo">La Inge Shop</div>
+    <ul class="nav-links">
+      <li><a href="#home">Hogar</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+  </nav>
 
-            // Elemento donde se mostrará el contador
-            const counterElement = document.getElementById('counter');
+  <!-- Sección de Hogar -->
+  <section id="home" class="section">
+    <div class="content fade-in-up">
+      <h1>Bienvenido a La Inge Shop</h1>
+      <p>Tu fuente de productos naturales y deliciosos.</p>
+      <button class="cta-button">Explorar Productos</button>
+    </div>
+  </section>
 
-            // Función para obtener el número de visitas
-            async function fetchVisits() {
-                try {
-                    counterElement.textContent = "Visitas: Cargando..."; // Mostrar mensaje de carga
-                    const response = await fetch(JSONBIN_URL, {
-                        method: "GET",
-                        headers: JSONBIN_HEADERS
-                    });
+  <!-- Sección de Nuestra Cocina -->
+  <section id="cocina" class="section">
+    <div class="content slide-in-left">
+      <h2>Nuestra Cocina</h2>
+      <p>Descubre cómo creamos productos artesanales con ingredientes frescos y locales.</p>
+      <div class="image-container">
+        <img src="assets/img/products-03.png" alt="Nuestra Cocina">
+      </div>
+    </div>
+  </section>
 
-                    // Verificar si la respuesta es exitosa
-                    if (!response.ok) {
-                        throw new Error(`Error HTTP: ${response.status}`);
-                    }
+  <!-- Sección de Sobre Nosotros -->
+  <section id="nosotros" class="section">
+    <div class="content zoom-in">
+      <h2>Sobre Nosotros</h2>
+      <p>En La Inge Shop, creemos en la calidad y el bienestar. Todos nuestros productos son naturales y libres de químicos.</p>
+      <div class="image-container">
+        <img src="assets/img/about.jpg" alt="Sobre Nosotros">
+      </div>
+    </div>
+  </section>
 
-                    const data = await response.json();
-                    const visits = data.record.visits || 0; // Obtener el valor de "visits"
-                    counterElement.textContent = `Visitas: ${visits}`;
+  <!-- Sección de Contacto -->
+  <section id="contacto" class="section">
+    <div class="content fade-in-down">
+      <h2>Contacto</h2>
+      <p>¿Tienes preguntas? Contáctanos y estaremos encantados de ayudarte.</p>
+      <form class="contact-form">
+        <input type="text" placeholder="Nombre" required>
+        <input type="email" placeholder="Correo Electrónico" required>
+        <textarea placeholder="Mensaje"></textarea>
+        <button type="submit">Enviar</button>
+      </form>
+    </div>
+  </section>
 
-                    // Actualizar el contador cada vez que alguien visita la página
-                    updateVisits(visits);
-                } catch (error) {
-                    console.error("Error al obtener las visitas:", error.message);
-                    counterElement.textContent = "Visitas: Error";
-                }
-            }
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p class="m-0 small">Copyright &copy; todos los derechos reservados a "La Inge" 2025</p>
+      <div class="footer-counter" id="counter">Visitas: Cargando...</div>
+    </div>
+  </footer>
 
-            // Función para actualizar el número de visitas
-            async function updateVisits(currentVisits) {
-                const newVisits = parseInt(currentVisits) + 1;
-                try {
-                    await fetch(JSONBIN_URL, {
-                        method: "PUT",
-                        headers: JSONBIN_HEADERS,
-                        body: JSON.stringify({
-                            visits: newVisits
-                        })
-                    });
-                } catch (error) {
-                    console.error("Error al actualizar las visitas:", error.message);
-                }
-            }
-
-            // Inicializar el contador
-            fetchVisits();
-        </script>
-
-        <!-- Botón de WhatsApp -->
-        <a href="https://wa.me/5636046971?text=Hola!%20Quiero%20saber%20sus%20productos%20disponibles%20y%20su%20costo!%20🥰" 
-   target="_blank" 
-   class="whatsapp-button">
+  <!-- Botón de WhatsApp -->
+  <a href="https://wa.me/5636046971?text=Hola!%20Quiero%20saber%20sus%20productos%20disponibles%20y%20su%20costo!%20🥰" target="_blank" class="whatsapp-button">
     <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
-</a>
+  </a>
 
-<style>
-    /* Estilo del botón de WhatsApp */
-    .whatsapp-button {
-        position: fixed; /* Fijo en la pantalla */
-        bottom: 20px; /* Distancia desde el fondo */
-        left: 20px; /* Distancia desde la izquierda */
-        width: 60px; /* Ancho del botón */
-        height: 60px; /* Alto del botón */
-        background-color: #25D366; /* Color verde de WhatsApp */
-        color: white;
-        border-radius: 50%; /* Forma circular */
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-decoration: none;
-        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Sombra para dar profundidad */
-        z-index: 1000; /* Asegura que esté siempre visible */
-        animation: pulse 1.5s infinite; /* Animación de pulsación */
-    }
-
-    /* Ícono de WhatsApp */
-    .whatsapp-button img {
-        width: 36px; /* Tamaño del ícono */
-        height: 36px;
-    }
-
-    /* Animación de pulsación */
-    @keyframes pulse {
-        0% {
-            transform: scale(1); /* Tamaño normal */
-        }
-        50% {
-            transform: scale(1.1); /* Aumenta ligeramente */
-        }
-        100% {
-            transform: scale(1); /* Vuelve al tamaño normal */
-        }
-    }
-</style>
-
-<script src="//code.tidio.co/n3okcmvhazwyi2jkjo0wzfeod5l5pncj.js" async></script>
-        
-        <!-- Botón de Facebook -->
-<a href="https://www.facebook.com/people/La-inge/61566649090443/" 
-   target="_blank" 
-   class="facebook-button">
+  <!-- Botón de Facebook -->
+  <a href="https://www.facebook.com/tupagina" target="_blank" class="facebook-button">
     <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook">
-</a>
+  </a>
 
-<style>
-    /* Estilo del botón de Facebook */
-    .facebook-button {
-        position: fixed; /* Fijo en la pantalla */
-        bottom: 90px; /* Distancia desde el fondo (ajustado para no encimar el botón de WhatsApp) */
-        left: 20px; /* Distancia desde la izquierda */
-        width: 50px; /* Ancho del botón (más pequeño que el de WhatsApp) */
-        height: 50px; /* Alto del botón */
-        background-color: #1877F2; /* Color azul de Facebook */
-        color: white;
-        border-radius: 50%; /* Forma circular */
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-decoration: none;
-        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Sombra para dar profundidad */
-        z-index: 1000; /* Asegura que esté siempre visible */
-    }
-
-    /* Ícono de Facebook */
-    .facebook-button img {
-        width: 24px; /* Tamaño del ícono (un poco más pequeño que el de WhatsApp) */
-        height: 24px;
-    }
-</style>
-    </body>
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="scripts.js"></script>
+</body>
 </html>
