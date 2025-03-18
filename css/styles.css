@@ -41,14 +41,7 @@ body {
 }
 
 /* Imagen principal interactiva */
-.image-container {
-  margin-top: calc(2cm - 1cm);
-  position: relative;
-  overflow: hidden;
-  border-radius: 20px;
-}
-
-.hero-image {
+.intro-img {
   width: 100%;
   height: auto;
   object-fit: cover;
@@ -56,61 +49,12 @@ body {
   transition: transform 0.3s ease;
 }
 
-.image-container:hover .hero-image {
-  transform: scale(1.05) translateX(var(--x)) translateY(var(--y));
+.intro-img:hover {
+  transform: scale(1.05);
 }
 
-/* Barra de correo electrónico */
-.email-bar-container {
-  position: relative;
-  margin-top: 20px;
-  display: flex;
-  justify-content: center;
-}
-
-.email-bar {
-  width: 300px;
-  padding: 10px;
-  font-size: 1.2rem;
-  color: #aaa;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  outline: none;
-  transition: border-color 0.3s ease;
-}
-
-.email-bar::placeholder {
-  color: transparent;
-}
-
-.email-bar + label {
-  position: absolute;
-  top: 50%;
-  left: 10px;
-  transform: translateY(-50%);
-  font-size: 1.2rem;
-  color: #aaa;
-  pointer-events: none;
-  white-space: nowrap;
-  overflow: hidden;
-  animation: typing 3s infinite alternate;
-}
-
-@keyframes typing {
-  0% {
-    width: 0;
-  }
-  100% {
-    width: 120px;
-  }
-}
-
-/* Botón CTA */
-.cta-button {
-  position: absolute;
-  bottom: 50px;
-  left: calc(50% - 100px);
-  padding: 15px 30px;
+/* Botón en la imagen principal */
+.btn-primary {
   background-color: #FFDEAD;
   color: #3c2814;
   border: none;
@@ -120,7 +64,7 @@ body {
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.cta-button:hover {
+.btn-primary:hover {
   background-color: #D2B48C;
   transform: scale(1.1);
 }
@@ -146,7 +90,7 @@ body {
 }
 
 /* Pie de página */
-footer {
+.footer {
   background-color: #3c2814;
   color: #fff;
   text-align: center;
@@ -156,8 +100,14 @@ footer {
   width: 100%;
 }
 
-footer p {
+.footer p {
   font-size: 1.8rem;
+}
+
+.footer-counter {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: #6c757d;
 }
 
 /* Botón de WhatsApp */

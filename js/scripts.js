@@ -1,36 +1,54 @@
-// Menú desplegable al pasar el mouse
-const menuToggle = document.querySelector('.menu-icon');
-const navbarNav = document.querySelector('.navbar-nav');
+// Contador de visitas con JSONBin
+const JSONBIN_URL = "https://api.jsonbin.io/v3/b/67d223698561e97a50ead685"; // Reemplaza con tu Bin ID
+const JSONBIN_HEADERS = {
+  "Content-Type": "application/json",
+  "X-Master-Key": "$2a$10$gXAeMiY4L81C8vAEsVxN6uA/EQ.T/h80zTtFsLAoYMahNWGQYlnHq" // Reemplaza con tu Master Key
+};
+const counterElement = document.getElementById('counter');
 
-menuToggle.addEventListener('mouseover', () => {
-  navbarNav.classList.add('open');
-});
+async function fetchVisits() {
+  try {
+    counterElement.textContent = "Visitas: Cargando...";
+    const response = await fetch(JSONBIN_URL, { method: "GET", headers: JSONBIN_HEADERS });
+    if (!response.ok) throw new Error(`Error HTTP: ${response.status}`);
+    const data = await response.json();
+    const visits = data.record.visits || 0;
+    counterElement.textContent = `Visitas: ${visits}`;
+    updateVisits(visits);
+  } catch (error) {
+    console.error("Error al obtener las visitas:", error.message);
+    counterElement.textContent = "Visitas: Error";
+  }
+}
 
-navbarNav.addEventListener('mouseleave', () => {
-  navbarNav.classList.remove('open');
-});
+async function updateVisits(currentVisits) {
+  const newVisits = parseInt(currentVisits) + 1;
+  try {
+    await fetch(JSONBIN_URL, {
+      method: "PUT",
+      headers: JSONBIN_HEADERS,
+      body: JSON.stringify({ visits: newVisits })
+    });
+  } catch (error) {
+    console.error("Error al actualizar las visitas:", error.message);
+  }
+}
 
-// Efecto interactivo en la imagen (parallax hover)
-const imageContainer = document.querySelector('.image-container');
-const heroImage = document.querySelector('.hero-image');
+// Inicializar el contador de visitas
+fetchVisits();
 
-imageContainer.addEventListener('mousemove', (e) => {
-  const { offsetWidth: width, offsetHeight: height } = imageContainer;
-  const { clientX, clientY } = e;
+// Controlar el scroll automático entre secciones
+let currentSectionIndex = 0;
+const sections = document.querySelectorAll('.section');
 
-  const x = (clientX / width - 0.5) * 10;
-  const y = (clientY / height - 0.5) * 10;
+function scrollToSection(index) {
+  if (index >= 0 && index < sections.length) {
+    currentSectionIndex = index;
+    sections[currentSectionIndex].scrollIntoView({ behavior: 'smooth' });
+    activateAnimations();
+  }
+}
 
-  heroImage.style.setProperty('--x', `${x}px`);
-  heroImage.style.setProperty('--y', `${y}px`);
-});
-
-// Animación de transición al hacer clic en "Continuar"
-const continueButton = document.getElementById('continueButton');
-const homeSection = document.getElementById('home');
-const cocinaSection = document.getElementById('cocina');
-
-continueButton.addEventListener('click', () => {
-  homeSection.style.display = 'none';
-  cocinaSection.classList.remove('hidden');
-});
+function activateAnimations() {
+  // Aquí puedes agregar animaciones específicas para cada sección
+}
