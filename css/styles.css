@@ -26,6 +26,7 @@ nav {
   justify-content: space-between;
   align-items: center;
   border-bottom: 2px solid #FFDEAD;
+  z-index: 1001; /* Menú siempre encima */
 }
 
 .navbar-container {
@@ -67,6 +68,7 @@ nav {
   transform: translateY(-20px);
   border-radius: 10px;
   box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
+  z-index: 1000; /* Menú siempre encima */
 }
 
 .navbar-nav.open {
@@ -95,17 +97,23 @@ nav {
 }
 
 /* Imagen principal interactiva */
+.image-container {
+  margin-top: 2cm; /* Mover la imagen 2 cm hacia abajo */
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
 .hero-image {
   width: 100%;
   height: auto;
   object-fit: cover;
   border-radius: 20px;
-  margin-top: 20px;
   transition: transform 0.3s ease;
 }
 
-.hero-image:hover {
-  transform: scale(1.05);
+.image-container:hover .hero-image {
+  transform: scale(1.05) translateX(var(--x)) translateY(var(--y));
 }
 
 /* Pie de página */
@@ -121,12 +129,6 @@ footer {
 
 footer p {
   font-size: 1.8rem;
-}
-
-.footer-counter {
-  margin-top: 15px;
-  font-size: 1.8rem;
-  color: #FFDEAD;
 }
 
 /* Botón de WhatsApp */
