@@ -1,10 +1,13 @@
-// Menú desplegable
-const menuToggle = document.getElementById('menuToggle');
+// Menú desplegable al pasar el mouse
+const menuToggle = document.querySelector('.menu-icon');
 const navbarNav = document.getElementById('navbarNav');
 
-menuToggle.addEventListener('click', () => {
-  menuToggle.classList.toggle('active');
-  navbarNav.classList.toggle('open');
+menuToggle.addEventListener('mouseover', () => {
+  navbarNav.classList.add('open');
+});
+
+navbarNav.addEventListener('mouseleave', () => {
+  navbarNav.classList.remove('open');
 });
 
 // Contador de visitas con JSONBin
