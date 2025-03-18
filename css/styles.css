@@ -14,18 +14,18 @@ body {
   background-attachment: fixed;
   color: #fff;
   scroll-behavior: smooth;
-  font-size: 1.5rem; /* Incrementar el tamaño de fuente global */
+  font-size: 1.5rem;
 }
 
 /* Barra de navegación */
 nav {
   position: relative;
-  background-color: transparent; /* Sin fondo */
-  padding: 15px 30px; /* Padding ajustado */
+  background-color: transparent;
+  padding: 15px 30px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 2px solid #FFDEAD; /* Línea divisoria debajo de "La Inge Shop" */
+  border-bottom: 2px solid #FFDEAD;
 }
 
 .navbar-container {
@@ -34,29 +34,29 @@ nav {
 }
 
 .navbar-brand {
-  font-size: 2rem; /* Tamaño reducido */
+  font-size: 2rem;
   font-weight: bold;
-  color: #FFDEAD; /* Beige claro */
+  color: #FFDEAD;
   text-decoration: none;
   margin-left: 10px;
   cursor: pointer;
-  font-family: 'Lora', serif; /* Fuente cursiva amigable */
-  font-style: italic; /* Estilo cursivo */
+  font-family: 'Lora', serif;
+  font-style: italic;
 }
 
 .menu-icon {
-  width: 30px; /* Tamaño reducido */
-  height: 30px; /* Tamaño reducido */
+  width: 30px;
+  height: 30px;
   cursor: pointer;
 }
 
 .navbar-nav {
   position: absolute;
-  top: 100%; /* Justo debajo del título */
+  top: 100%;
   left: 0;
-  width: auto; /* Ancho ajustado al contenido */
-  max-width: 300px; /* Ancho máximo hasta "La Inge Shop" */
-  background-color: #8B9467; /* Verde ambientalista */
+  width: auto;
+  max-width: 300px;
+  background-color: #8B9467;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -64,96 +64,78 @@ nav {
   max-height: 0;
   opacity: 0;
   transition: max-height 0.5s ease, opacity 0.5s ease, transform 0.5s ease;
-  transform: translateY(-20px); /* Efecto inicial hacia arriba */
-  border-radius: 10px; /* Bordes redondeados */
-  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2); /* Sombra ligera */
+  transform: translateY(-20px);
+  border-radius: 10px;
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
 }
 
 .navbar-nav.open {
-  max-height: 300px; /* Altura suficiente para mostrar el menú */
+  max-height: 300px;
   opacity: 1;
-  transform: translateY(0); /* Animación hacia abajo */
+  transform: translateY(0);
 }
 
 .navbar-nav li {
-  margin: 10px 0; /* Espaciado ajustado */
+  margin: 10px 0;
 }
 
 .navbar-nav a {
   text-decoration: none;
-  color: #fff; /* Texto blanco */
+  color: #fff;
   font-weight: bold;
-  font-size: 1.6rem; /* Tamaño de fuente ajustado */
+  font-size: 1.6rem;
   padding: 10px 20px;
   display: block;
   transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .navbar-nav a:hover {
-  color: #D2B48C; /* Beige más oscuro */
+  color: #D2B48C;
   transform: scale(1.1);
 }
 
-/* Contenido principal */
-.content {
-  text-align: center;
-  padding: 120px 30px; /* Padding ajustado */
+/* Imagen principal interactiva */
+.hero-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 20px;
+  margin-top: 20px;
+  transition: transform 0.3s ease;
 }
 
-.content h1 {
-  font-size: 5rem; /* Tamaño ajustado */
-  margin-bottom: 30px; /* Espaciado ajustado */
-}
-
-.content p {
-  font-size: 2rem; /* Tamaño ajustado */
-  margin-bottom: 60px; /* Espaciado ajustado */
-}
-
-.cta-button {
-  padding: 15px 30px; /* Padding ajustado */
-  background-color: #FFDEAD; /* Beige claro */
-  color: #3c2814; /* Café oscuro intenso */
-  border: none;
-  border-radius: 10px; /* Bordes redondeados ajustados */
-  font-size: 1.8rem; /* Tamaño ajustado */
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.cta-button:hover {
-  background-color: #D2B48C; /* Beige más oscuro */
-  transform: scale(1.1);
+.hero-image:hover {
+  transform: scale(1.05);
 }
 
 /* Pie de página */
 footer {
-  background-color: #3c2814; /* Café oscuro intenso */
+  background-color: #3c2814;
   color: #fff;
   text-align: center;
-  padding: 30px; /* Padding ajustado */
+  padding: 30px;
   position: relative;
   bottom: 0;
   width: 100%;
 }
 
 footer p {
-  font-size: 1.8rem; /* Tamaño ajustado */
+  font-size: 1.8rem;
 }
 
 .footer-counter {
-  margin-top: 15px; /* Espaciado ajustado */
-  font-size: 1.8rem; /* Tamaño ajustado */
+  margin-top: 15px;
+  font-size: 1.8rem;
   color: #FFDEAD;
 }
 
 /* Botón de WhatsApp */
 .whatsapp-button {
   position: fixed;
-  bottom: 30px; /* Distancia ajustada */
-  left: 30px; /* Distancia ajustada */
-  width: 80px; /* Tamaño ajustado */
-  height: 80px; /* Tamaño ajustado */
+  bottom: 30px;
+  left: 30px;
+  width: 80px;
+  height: 80px;
   background-color: #25D366;
   color: white;
   border-radius: 50%;
@@ -161,23 +143,23 @@ footer p {
   align-items: center;
   justify-content: center;
   text-decoration: none;
-  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2); /* Sombra ajustada */
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
   z-index: 1000;
   animation: pulse 1.5s infinite;
 }
 
 .whatsapp-button img {
-  width: 48px; /* Tamaño ajustado */
-  height: 48px; /* Tamaño ajustado */
+  width: 48px;
+  height: 48px;
 }
 
 /* Botón de Facebook */
 .facebook-button {
   position: fixed;
-  bottom: 120px; /* Distancia ajustada */
-  left: 30px; /* Distancia ajustada */
-  width: 60px; /* Tamaño ajustado */
-  height: 60px; /* Tamaño ajustado */
+  bottom: 120px;
+  left: 30px;
+  width: 60px;
+  height: 60px;
   background-color: #1877F2;
   color: white;
   border-radius: 50%;
@@ -185,13 +167,13 @@ footer p {
   align-items: center;
   justify-content: center;
   text-decoration: none;
-  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2); /* Sombra ajustada */
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
   z-index: 1000;
 }
 
 .facebook-button img {
-  width: 36px; /* Tamaño ajustado */
-  height: 36px; /* Tamaño ajustado */
+  width: 36px;
+  height: 36px;
 }
 
 /* Animación de pulsación */
