@@ -1,6 +1,6 @@
 // Menú desplegable al pasar el mouse
 const menuToggle = document.querySelector('.menu-icon');
-const navbarNav = document.getElementById('navbarNav');
+const navbarNav = document.querySelector('.navbar-nav');
 
 menuToggle.addEventListener('mouseover', () => {
   navbarNav.classList.add('open');
@@ -18,8 +18,8 @@ imageContainer.addEventListener('mousemove', (e) => {
   const { offsetWidth: width, offsetHeight: height } = imageContainer;
   const { clientX, clientY } = e;
 
-  const x = (clientX / width - 0.5) * 10; // Movimiento horizontal más suave
-  const y = (clientY / height - 0.5) * 10; // Movimiento vertical más suave
+  const x = (clientX / width - 0.5) * 10;
+  const y = (clientY / height - 0.5) * 10;
 
   heroImage.style.setProperty('--x', `${x}px`);
   heroImage.style.setProperty('--y', `${y}px`);

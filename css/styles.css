@@ -18,93 +18,31 @@ body {
 }
 
 /* Barra de navegación */
-nav {
-  position: relative;
+.navbar {
   background-color: transparent;
   padding: 15px 30px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   border-bottom: 2px solid #FFDEAD;
-  z-index: 1001;
-}
-
-.navbar-container {
-  display: flex;
-  align-items: center;
 }
 
 .navbar-brand {
+  font-family: 'Dancing Script', cursive;
   font-size: 2rem;
-  font-weight: bold;
   color: #FFDEAD;
-  text-decoration: none;
-  margin-left: 10px;
-  cursor: pointer;
-  font-family: 'Dancing Script', cursive; /* Fuente cursiva clásica */
 }
 
-.menu-icon {
-  width: 30px;
-  height: 30px;
-  cursor: pointer;
-}
-
-.navbar-nav {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: auto;
-  max-width: 300px;
-  background-color: #8B9467;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  max-height: 0;
-  opacity: 0;
-  transition: max-height 0.5s ease, opacity 0.5s ease, transform 0.5s ease;
-  transform: translateY(-20px);
-  border-radius: 10px;
-  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
-  z-index: 1000;
-}
-
-.navbar-nav.open {
-  max-height: 400px;
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.navbar-nav li {
-  margin: 10px 0;
-}
-
-.navbar-nav a {
-  text-decoration: none;
-  color: #fff;
-  font-weight: bold;
+.navbar-nav .nav-link {
+  font-family: 'Dancing Script', cursive;
   font-size: 1.6rem;
-  padding: 10px 20px;
-  display: block;
-  transition: color 0.3s ease, transform 0.3s ease;
-  font-family: 'Dancing Script', cursive; /* Fuente cursiva clásica */
+  color: #fff;
 }
 
-.navbar-nav a:hover {
+.navbar-nav .nav-link:hover {
   color: #D2B48C;
-  transform: scale(1.1);
-}
-
-.divider {
-  border: 1px solid #fff;
-  margin: 5px 20px;
-  opacity: 0.5;
 }
 
 /* Imagen principal interactiva */
 .image-container {
-  margin-top: calc(2cm - 1cm); /* Mover la imagen 1 cm hacia arriba */
+  margin-top: calc(2cm - 1cm);
   position: relative;
   overflow: hidden;
   border-radius: 20px;
@@ -134,7 +72,7 @@ nav {
   width: 300px;
   padding: 10px;
   font-size: 1.2rem;
-  color: #aaa; /* Texto gris claro */
+  color: #aaa;
   border: 1px solid #ccc;
   border-radius: 5px;
   outline: none;
@@ -142,7 +80,7 @@ nav {
 }
 
 .email-bar::placeholder {
-  color: transparent; /* Ocultar el placeholder real */
+  color: transparent;
 }
 
 .email-bar + label {
@@ -163,7 +101,7 @@ nav {
     width: 0;
   }
   100% {
-    width: 120px; /* Ancho suficiente para mostrar el texto completo */
+    width: 120px;
   }
 }
 
@@ -171,7 +109,7 @@ nav {
 .cta-button {
   position: absolute;
   bottom: 50px;
-  left: calc(50% - 100px); /* Reposicionar el botón un poco a la izquierda */
+  left: calc(50% - 100px);
   padding: 15px 30px;
   background-color: #FFDEAD;
   color: #3c2814;
@@ -255,42 +193,3 @@ footer p {
   height: 60px;
   background-color: #1877F2;
   color: white;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
-  z-index: 1000;
-}
-
-.facebook-button img {
-  width: 36px;
-  height: 36px;
-}
-
-/* Animación de pulsación */
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.1);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
-/* Media queries para pantallas pequeñas */
-@media (max-width: 768px) {
-  .navbar-nav {
-    display: block;
-    max-height: 0;
-    opacity: 0;
-  }
-
-  .menu-icon {
-    display: block;
-  }
-}
