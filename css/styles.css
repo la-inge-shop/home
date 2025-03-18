@@ -104,7 +104,7 @@ nav {
 
 /* Imagen principal interactiva */
 .image-container {
-  margin-top: 2cm;
+  margin-top: calc(2cm - 1cm); /* Mover la imagen 1 cm hacia arriba */
   position: relative;
   overflow: hidden;
   border-radius: 20px;
@@ -122,12 +122,56 @@ nav {
   transform: scale(1.05) translateX(var(--x)) translateY(var(--y));
 }
 
+/* Barra de correo electrónico */
+.email-bar-container {
+  position: relative;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.email-bar {
+  width: 300px;
+  padding: 10px;
+  font-size: 1.2rem;
+  color: #aaa; /* Texto gris claro */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.email-bar::placeholder {
+  color: transparent; /* Ocultar el placeholder real */
+}
+
+.email-bar + label {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+  color: #aaa;
+  pointer-events: none;
+  white-space: nowrap;
+  overflow: hidden;
+  animation: typing 3s infinite alternate;
+}
+
+@keyframes typing {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 120px; /* Ancho suficiente para mostrar el texto completo */
+  }
+}
+
 /* Botón CTA */
 .cta-button {
   position: absolute;
   bottom: 50px;
-  left: 50%;
-  transform: translateX(-50%);
+  left: calc(50% - 100px); /* Reposicionar el botón un poco a la izquierda */
   padding: 15px 30px;
   background-color: #FFDEAD;
   color: #3c2814;
