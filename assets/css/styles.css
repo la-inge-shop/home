@@ -1,0 +1,116 @@
+:root {
+    --primary: #4A6B3D;
+    --secondary: #D97E4A;
+    --accent: #A3B18A;
+    --dark: #3E2723;
+    --light: #F9F8F5;
+    --text-dark: #2F3E34;
+    --gradient: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
+}
+
+/* Reset y estilos base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-dark);
+    background: var(--light);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Divisores de sección */
+.section-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, var(--accent) 50%, transparent 100%);
+    margin: 4rem 0;
+}
+
+/* Especialidades ajustadas */
+.specialties-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    padding: 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.specialty {
+    padding: 1rem;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.specialty img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+
+.specialty h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Carrusel mejorado */
+.testimonial-carousel {
+    max-width: 800px;
+    margin: 0 auto 3rem;
+    height: 280px;
+    position: relative;
+    overflow: hidden;
+}
+
+.testimonial {
+    position: absolute;
+    width: 100%;
+    padding: 1.5rem;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    background: var(--light);
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.testimonial.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.testimonial.exit {
+    transform: translateX(-100%);
+    opacity: 0;
+}
+
+.testimonial img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1rem;
+    border: 2px solid var(--secondary);
+}
+
+/* Animación hover carrusel */
+.testimonial-carousel:hover .testimonial {
+    transition-duration: 0.8s;
+}
+
+/* Contacto destacado */
+.contact {
+    background: var(--gradient);
+    padding: 4rem 0;
+}
+
+.contact-form {
+    background: rgba(255, 255, 255, 0.9);
+    border: 2px solid var(--primary);
+}
