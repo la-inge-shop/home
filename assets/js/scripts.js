@@ -709,18 +709,25 @@ document.addEventListener('DOMContentLoaded', () => {
   const contactForm = document.getElementById('contactForm');
   
   if (contactForm) {
-      // Generar timestamp al cargar
-      document.getElementById('timestamp').value = new Date().toISOString();
-      
       contactForm.addEventListener('submit', function(e) {
-          // Mostrar feedback al usuario
+          e.preventDefault();
+          
           const submitBtn = contactForm.querySelector('button[type="submit"]');
           const originalText = submitBtn.innerHTML;
+          
+          // Mostrar feedback de carga
           submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
           submitBtn.disabled = true;
           
-          // Opcional: Agregar productos del carrito al mensaje
-          if (cart.length > 0) {
+          // Agregar timestamp
+          const timestampField = document.createElement('input');
+          timestampField.type = 'hidden';
+          timestampField.name = 'entry.1234567890'; // Reemplaza con el ID real si tienes campo de timestamp
+          timestampField.value = new Date().toISOString();
+          contactForm.appendChild(timestampField);
+          
+          // Agregar productos del carrito si existen
+          if (typeof cart !== 'undefined' && cart.length > 0) {
               const messageField = document.getElementById('message');
               const cartItems = cart.map(item => 
                   `${item.name} - ${item.quantity} x $${item.price.toFixed(2)}`
@@ -730,16 +737,18 @@ document.addEventListener('DOMContentLoaded', () => {
               messageField.value = `PRODUCTOS SELECCIONADOS:\n${cartItems}\nTOTAL: $${total.toFixed(2)}\n\n${messageField.value}`;
           }
           
-          // Crear un pequeño retraso para que el usuario vea el feedback
+          // Enviar el formulario
+          contactForm.submit();
+          
+          // Mostrar confirmación
           setTimeout(() => {
               showNotification('Mensaje enviado con éxito', 'success');
               submitBtn.innerHTML = originalText;
               submitBtn.disabled = false;
               
-              // Opcional: Resetear el formulario después de 2 segundos
+              // Resetear formulario después de 2 segundos
               setTimeout(() => {
                   contactForm.reset();
-                  document.getElementById('timestamp').value = new Date().toISOString();
               }, 2000);
           }, 1500);
       });
