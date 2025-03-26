@@ -1,349 +1,431 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // ========== MENÚ MÓVIL ==========
-  const menuIcon = document.getElementById('menuIcon');
-  const navLinks = document.getElementById('navLinks');
+    // ========== MENÚ MÓVIL ==========
+    const menuIcon = document.getElementById('menuIcon');
+    const navLinks = document.getElementById('navLinks');
+    
+    menuIcon.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        menuIcon.classList.toggle('active');
+    });
   
-  menuIcon.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
-      menuIcon.classList.toggle('active');
-  });
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+            menuIcon.classList.remove('active');
+        });
+    });
+  
+    // Carrusel de testimonios
+    const testimonials = [
+        { 
+            name: "María G.", 
+            comment: "¡La mejor experiencia! La longaniza es increíble, con un sabor único que no encuentras en otro lugar.", 
+            photo: "user1.jpg", 
+            rating: 5 
+        },
+        { 
+            name: "Carlos M.", 
+            comment: "Calidad premium en todos sus productos. Los quesos madurados son simplemente excepcionales.", 
+            photo: "user2.jpg", 
+            rating: 5 
+        },
+        { 
+            name: "Ana L.", 
+            comment: "Productos frescos y deliciosos. Las mermeladas naturales son mi debilidad, ¡siempre pido más!", 
+            photo: "user3.jpg", 
+            rating: 5 
+        },
+        { 
+            name: "Pedro R.", 
+            comment: "Servicio impecable y atención personalizada. Recomiendo sus botanas artesanales para cualquier reunión.", 
+            photo: "user4.jpg", 
+            rating: 4 
+        },
+        { 
+            name: "Luisa T.", 
+            comment: "Sabores auténticos que te transportan. Los dulces regionales son exactamente como los hacía mi abuela.", 
+            photo: "user5.jpg", 
+            rating: 5 
+        },
+        { 
+            name: "Jorge S.", 
+            comment: "Entrega puntual y productos bien empacados. El chorizo casero es el mejor que he probado.", 
+            photo: "user6.jpg", 
+            rating: 5 
+        },
+        { 
+            name: "Fernanda V.", 
+            comment: "La atención al cliente es excelente y los productos siempre llegan en perfecto estado. ¡100% recomendado!", 
+            photo: "user7.jpg", 
+            rating: 5 
+        },
+        { 
+            name: "Ricardo P.", 
+            comment: "He probado muchas marcas artesanales, pero ninguna se compara con la calidad de La Inge Shop.", 
+            photo: "user8.jpg", 
+            rating: 5 
+        },
+        { 
+            name: "Gabriela M.", 
+            comment: "Las salsas artesanales son el acompañamiento perfecto para todos mis platillos. ¡Deliciosas!", 
+            photo: "user9.jpg", 
+            rating: 4 
+        },
+        { 
+            name: "Oscar L.", 
+            comment: "Productos con sabores tradicionales pero con presentación moderna. Perfecto para regalos corporativos.", 
+            photo: "user10.jpg", 
+            rating: 5 
+        },
+        { 
+            name: "Patricia C.", 
+            comment: "La variedad de productos es impresionante. Cada mes pruebo algo nuevo y nunca decepcionan.", 
+            photo: "user11.jpg", 
+            rating: 5 
+        },
+        { 
+            name: "Eduardo N.", 
+            comment: "El proceso de compra es muy sencillo y la entrega super rápida. ¡Volveré a ordenar pronto!", 
+            photo: "user12.jpg", 
+            rating: 5 
+        },
+        { 
+            name: "Sofía R.", 
+            comment: "Los ingredientes son de la más alta calidad. Se nota que cuidan cada detalle de sus productos.", 
+            photo: "user13.jpg", 
+            rating: 5 
+        },
+        { 
+            name: "Miguel Á.", 
+            comment: "Como chef profesional, valoro mucho la autenticidad de sus sabores. Son mis proveedores favoritos.", 
+            photo: "user14.jpg", 
+            rating: 5 
+        },
+        { 
+            name: "Daniela Z.", 
+            comment: "El balance perfecto entre tradición e innovación. Cada producto cuenta una historia deliciosa.", 
+            photo: "user15.jpg", 
+            rating: 5 
+        }
+    ];
+  
+    let currentTestimonials = [];
+    const carousel = document.getElementById('testimonialCarousel');
+    const prevBtn = document.getElementById('prevTestimonial');
+    const nextBtn = document.getElementById('nextTestimonial');
+    let autoSlide;
+    
+    // Efecto de flotación para los testimonios
+    const applyFloatEffect = () => {
+        const testimonials = document.querySelectorAll('.testimonial');
+        testimonials.forEach((testimonial, index) => {
+            testimonial.style.animation = `float 4s ease-in-out ${index * 0.2}s infinite alternate`;
+        });
+    };
+    
+    // Mezclar testimonios aleatoriamente
+    const shuffleTestimonials = () => {
+        currentTestimonials = [...testimonials].sort(() => 0.5 - Math.random());
+    };
+    
+    // Efecto de transición elaborada
+    const elaborateTransition = (callback) => {
+        carousel.style.transform = 'scale(0.95)';
+        carousel.style.opacity = '0';
+        carousel.style.filter = 'blur(2px)';
+        carousel.style.transition = 'all 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55)';
+        
+        setTimeout(() => {
+            callback();
+            
+            setTimeout(() => {
+                carousel.style.transform = 'scale(1)';
+                carousel.style.opacity = '1';
+                carousel.style.filter = 'blur(0)';
+                applyFloatEffect();
+            }, 50);
+        }, 600);
+    };
+    
+    // Mostrar testimonios
+    const showTestimonials = () => {
+        const testimonialsPerGroup = window.innerWidth < 768 ? 1 : window.innerWidth < 992 ? 2 : 3;
+        const testimonialsToShow = currentTestimonials.slice(0, testimonialsPerGroup);
+        
+        carousel.innerHTML = '';
+        const group = document.createElement('div');
+        group.className = 'testimonial-group';
+        
+        testimonialsToShow.forEach(testimonial => {
+            group.innerHTML += `
+                <div class="testimonial">
+                    <img src="assets/img/${testimonial.photo}" alt="${testimonial.name}" loading="lazy">
+                    <h4>${testimonial.name}</h4>
+                    <div class="rating">${'★'.repeat(testimonial.rating)}${testimonial.rating < 5 ? '☆'.repeat(5 - testimonial.rating) : ''}</div>
+                    <p>"${testimonial.comment}"</p>
+                </div>
+            `;
+        });
+        
+        carousel.appendChild(group);
+        applyFloatEffect();
+    };
+    
+    // Cambiar a siguientes testimonios
+    const nextTestimonials = () => {
+        const testimonialsPerGroup = window.innerWidth < 768 ? 1 : window.innerWidth < 992 ? 2 : 3;
+        
+        currentTestimonials = [
+            ...currentTestimonials.slice(testimonialsPerGroup),
+            ...currentTestimonials.slice(0, testimonialsPerGroup)
+        ];
+        
+        elaborateTransition(showTestimonials);
+    };
+    
+    // Cambiar a testimonios anteriores
+    const prevTestimonials = () => {
+        const testimonialsPerGroup = window.innerWidth < 768 ? 1 : window.innerWidth < 992 ? 2 : 3;
+        
+        currentTestimonials = [
+            ...currentTestimonials.slice(-testimonialsPerGroup),
+            ...currentTestimonials.slice(0, -testimonialsPerGroup)
+        ];
+        
+        elaborateTransition(showTestimonials);
+    };
+    
+    // Iniciar carrusel
+    const initCarousel = () => {
+        shuffleTestimonials();
+        showTestimonials();
+    };
+    
+    // Navegación automática
+    const startAutoSlide = () => {
+        clearInterval(autoSlide);
+        autoSlide = setInterval(() => {
+            nextTestimonials();
+        }, 5000);
+    };
+    
+    // Event listeners
+    prevBtn.addEventListener('click', () => {
+        clearInterval(autoSlide);
+        prevTestimonials();
+        startAutoSlide();
+    });
+    
+    nextBtn.addEventListener('click', () => {
+        clearInterval(autoSlide);
+        nextTestimonials();
+        startAutoSlide();
+    });
+    
+    // Pausar al interactuar
+    carousel.addEventListener('mouseenter', () => {
+        clearInterval(autoSlide);
+    });
+    
+    carousel.addEventListener('mouseleave', startAutoSlide);
+    
+    // Redimensionamiento
+    window.addEventListener('resize', () => {
+        clearInterval(autoSlide);
+        initCarousel();
+        startAutoSlide();
+    });
+    
+    // Inicializar
+    initCarousel();
+    startAutoSlide();
+  
+    // Añadir estilo para la animación de flotación
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0.5deg);
+                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            }
+            100% {
+                transform: translateY(-10px) rotate(-0.5deg);
+                box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+            }
+        }
+        
+        .testimonial {
+            animation: float 4s ease-in-out infinite alternate;
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial:hover {
+            animation-play-state: paused;
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2) !important;
+        }
+    `;
+    document.head.appendChild(style);
+  
+    // Scroll suave
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                window.scrollTo({
+                    top: target.offsetTop - 70,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+    
+    // Scroll to Top
+    const scrollToTop = document.getElementById('scrollToTop');
+    window.addEventListener('scroll', () => {
+        scrollToTop.style.display = window.scrollY > 500 ? 'flex' : 'none';
+    });
+    
+    scrollToTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    
+    // Efecto de navbar al hacer scroll
+    window.addEventListener('scroll', () => {
+        const navbar = document.querySelector('.navbar');
+        if (window.scrollY > 50) {
+            navbar.style.padding = '1rem 5%';
+            navbar.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
+        } else {
+            navbar.style.padding = '1.5rem 5%';
+            navbar.style.boxShadow = '0 2px 15px rgba(0, 0, 0, 0.1)';
+        }
+    });
+    
+    // Animación de elementos al hacer scroll
+    const animateOnScroll = () => {
+        const elements = document.querySelectorAll('.section-title, .product-card, .specialty-card, .testimonial, .contact-form');
+        
+        elements.forEach(element => {
+            const elementPosition = element.getBoundingClientRect().top;
+            const screenPosition = window.innerHeight / 1.3;
+            
+            if (elementPosition < screenPosition) {
+                element.style.opacity = '1';
+                element.style.transform = 'translateY(0)';
+            }
+        });
+    };
+    
+    // Inicializar animaciones
+    window.addEventListener('load', () => {
+        const animatedElements = document.querySelectorAll('.section-title, .product-card, .specialty-card, .testimonial, .contact-form');
+        animatedElements.forEach(element => {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(30px)';
+            element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        });
+        
+        animateOnScroll();
+    });
+    
+    window.addEventListener('scroll', animateOnScroll);
+  
+    // ========== INTEGRACIÓN CON GOOGLE FORMS ==========
+    const contactForm = document.getElementById('contactForm');
+    
+    if (contactForm) {
+        // Función para obtener fbzx dinámicamente (actualizada)
+        async function getFbzx() {
+            try {
+                const response = await fetch('https://docs.google.com/forms/d/e/1FAIpQLSdPLqpcs0uCakJE7mg2FYdUeRkY8xiUgCDGr-nBfBbTwZ9xDQ/viewform');
+                const text = await response.text();
+                const fbzxMatch = text.match(/"fbzx"\s*:\s*"(-?\d+)"/);
+                return fbzxMatch ? fbzxMatch[1] : '-6078767790911626605'; // Nuevo valor por defecto
+            } catch (error) {
+                console.error('Error al obtener fbzx:', error);
+                return '-6078767790911626605'; // Nuevo valor por defecto
+            }
+        }
 
-  document.querySelectorAll('.nav-links a').forEach(link => {
-      link.addEventListener('click', () => {
-          navLinks.classList.remove('active');
-          menuIcon.classList.remove('active');
-      });
-  });
-
-  // Carrusel de testimonios
-  const testimonials = [
-      { 
-          name: "María G.", 
-          comment: "¡La mejor experiencia! La longaniza es increíble, con un sabor único que no encuentras en otro lugar.", 
-          photo: "user1.jpg", 
-          rating: 5 
-      },
-      { 
-          name: "Carlos M.", 
-          comment: "Calidad premium en todos sus productos. Los quesos madurados son simplemente excepcionales.", 
-          photo: "user2.jpg", 
-          rating: 5 
-      },
-      { 
-          name: "Ana L.", 
-          comment: "Productos frescos y deliciosos. Las mermeladas naturales son mi debilidad, ¡siempre pido más!", 
-          photo: "user3.jpg", 
-          rating: 5 
-      },
-      { 
-          name: "Pedro R.", 
-          comment: "Servicio impecable y atención personalizada. Recomiendo sus botanas artesanales para cualquier reunión.", 
-          photo: "user4.jpg", 
-          rating: 4 
-      },
-      { 
-          name: "Luisa T.", 
-          comment: "Sabores auténticos que te transportan. Los dulces regionales son exactamente como los hacía mi abuela.", 
-          photo: "user5.jpg", 
-          rating: 5 
-      },
-      { 
-          name: "Jorge S.", 
-          comment: "Entrega puntual y productos bien empacados. El chorizo casero es el mejor que he probado.", 
-          photo: "user6.jpg", 
-          rating: 5 
-      },
-      { 
-          name: "Fernanda V.", 
-          comment: "La atención al cliente es excelente y los productos siempre llegan en perfecto estado. ¡100% recomendado!", 
-          photo: "user7.jpg", 
-          rating: 5 
-      },
-      { 
-          name: "Ricardo P.", 
-          comment: "He probado muchas marcas artesanales, pero ninguna se compara con la calidad de La Inge Shop.", 
-          photo: "user8.jpg", 
-          rating: 5 
-      },
-      { 
-          name: "Gabriela M.", 
-          comment: "Las salsas artesanales son el acompañamiento perfecto para todos mis platillos. ¡Deliciosas!", 
-          photo: "user9.jpg", 
-          rating: 4 
-      },
-      { 
-          name: "Oscar L.", 
-          comment: "Productos con sabores tradicionales pero con presentación moderna. Perfecto para regalos corporativos.", 
-          photo: "user10.jpg", 
-          rating: 5 
-      },
-      { 
-          name: "Patricia C.", 
-          comment: "La variedad de productos es impresionante. Cada mes pruebo algo nuevo y nunca decepcionan.", 
-          photo: "user11.jpg", 
-          rating: 5 
-      },
-      { 
-          name: "Eduardo N.", 
-          comment: "El proceso de compra es muy sencillo y la entrega super rápida. ¡Volveré a ordenar pronto!", 
-          photo: "user12.jpg", 
-          rating: 5 
-      },
-      { 
-          name: "Sofía R.", 
-          comment: "Los ingredientes son de la más alta calidad. Se nota que cuidan cada detalle de sus productos.", 
-          photo: "user13.jpg", 
-          rating: 5 
-      },
-      { 
-          name: "Miguel Á.", 
-          comment: "Como chef profesional, valoro mucho la autenticidad de sus sabores. Son mis proveedores favoritos.", 
-          photo: "user14.jpg", 
-          rating: 5 
-      },
-      { 
-          name: "Daniela Z.", 
-          comment: "El balance perfecto entre tradición e innovación. Cada producto cuenta una historia deliciosa.", 
-          photo: "user15.jpg", 
-          rating: 5 
-      }
-  ];
-
-  let currentTestimonials = [];
-  const carousel = document.getElementById('testimonialCarousel');
-  const prevBtn = document.getElementById('prevTestimonial');
-  const nextBtn = document.getElementById('nextTestimonial');
-  let autoSlide;
-  
-  // Efecto de flotación para los testimonios
-  const applyFloatEffect = () => {
-      const testimonials = document.querySelectorAll('.testimonial');
-      testimonials.forEach((testimonial, index) => {
-          testimonial.style.animation = `float 4s ease-in-out ${index * 0.2}s infinite alternate`;
-      });
-  };
-  
-  // Mezclar testimonios aleatoriamente
-  const shuffleTestimonials = () => {
-      currentTestimonials = [...testimonials].sort(() => 0.5 - Math.random());
-  };
-  
-  // Efecto de transición elaborada
-  const elaborateTransition = (callback) => {
-      carousel.style.transform = 'scale(0.95)';
-      carousel.style.opacity = '0';
-      carousel.style.filter = 'blur(2px)';
-      carousel.style.transition = 'all 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55)';
-      
-      setTimeout(() => {
-          callback();
-          
-          setTimeout(() => {
-              carousel.style.transform = 'scale(1)';
-              carousel.style.opacity = '1';
-              carousel.style.filter = 'blur(0)';
-              applyFloatEffect();
-          }, 50);
-      }, 600);
-  };
-  
-  // Mostrar testimonios
-  const showTestimonials = () => {
-      const testimonialsPerGroup = window.innerWidth < 768 ? 1 : window.innerWidth < 992 ? 2 : 3;
-      const testimonialsToShow = currentTestimonials.slice(0, testimonialsPerGroup);
-      
-      carousel.innerHTML = '';
-      const group = document.createElement('div');
-      group.className = 'testimonial-group';
-      
-      testimonialsToShow.forEach(testimonial => {
-          group.innerHTML += `
-              <div class="testimonial">
-                  <img src="assets/img/${testimonial.photo}" alt="${testimonial.name}" loading="lazy">
-                  <h4>${testimonial.name}</h4>
-                  <div class="rating">${'★'.repeat(testimonial.rating)}${testimonial.rating < 5 ? '☆'.repeat(5 - testimonial.rating) : ''}</div>
-                  <p>"${testimonial.comment}"</p>
-              </div>
-          `;
-      });
-      
-      carousel.appendChild(group);
-      applyFloatEffect();
-  };
-  
-  // Cambiar a siguientes testimonios
-  const nextTestimonials = () => {
-      const testimonialsPerGroup = window.innerWidth < 768 ? 1 : window.innerWidth < 992 ? 2 : 3;
-      
-      currentTestimonials = [
-          ...currentTestimonials.slice(testimonialsPerGroup),
-          ...currentTestimonials.slice(0, testimonialsPerGroup)
-      ];
-      
-      elaborateTransition(showTestimonials);
-  };
-  
-  // Cambiar a testimonios anteriores
-  const prevTestimonials = () => {
-      const testimonialsPerGroup = window.innerWidth < 768 ? 1 : window.innerWidth < 992 ? 2 : 3;
-      
-      currentTestimonials = [
-          ...currentTestimonials.slice(-testimonialsPerGroup),
-          ...currentTestimonials.slice(0, -testimonialsPerGroup)
-      ];
-      
-      elaborateTransition(showTestimonials);
-  };
-  
-  // Iniciar carrusel
-  const initCarousel = () => {
-      shuffleTestimonials();
-      showTestimonials();
-  };
-  
-  // Navegación automática
-  const startAutoSlide = () => {
-      clearInterval(autoSlide);
-      autoSlide = setInterval(() => {
-          nextTestimonials();
-      }, 5000);
-  };
-  
-  // Event listeners
-  prevBtn.addEventListener('click', () => {
-      clearInterval(autoSlide);
-      prevTestimonials();
-      startAutoSlide();
-  });
-  
-  nextBtn.addEventListener('click', () => {
-      clearInterval(autoSlide);
-      nextTestimonials();
-      startAutoSlide();
-  });
-  
-  // Pausar al interactuar
-  carousel.addEventListener('mouseenter', () => {
-      clearInterval(autoSlide);
-  });
-  
-  carousel.addEventListener('mouseleave', startAutoSlide);
-  
-  // Redimensionamiento
-  window.addEventListener('resize', () => {
-      clearInterval(autoSlide);
-      initCarousel();
-      startAutoSlide();
-  });
-  
-  // Inicializar
-  initCarousel();
-  startAutoSlide();
-
-  // Añadir estilo para la animación de flotación
-  const style = document.createElement('style');
-  style.textContent = `
-      @keyframes float {
-          0% {
-              transform: translateY(0) rotate(0.5deg);
-              box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-          }
-          100% {
-              transform: translateY(-10px) rotate(-0.5deg);
-              box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-          }
-      }
-      
-      .testimonial {
-          animation: float 4s ease-in-out infinite alternate;
-          transition: all 0.3s ease;
-      }
-      
-      .testimonial:hover {
-          animation-play-state: paused;
-          transform: translateY(-5px) scale(1.02);
-          box-shadow: 0 10px 25px rgba(0,0,0,0.2) !important;
-      }
-  `;
-  document.head.appendChild(style);
-
-  // Scroll suave
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-          e.preventDefault();
-          const target = document.querySelector(this.getAttribute('href'));
-          if (target) {
-              window.scrollTo({
-                  top: target.offsetTop - 70,
-                  behavior: 'smooth'
-              });
-          }
-      });
-  });
-  
-  // Scroll to Top
-  const scrollToTop = document.getElementById('scrollToTop');
-  window.addEventListener('scroll', () => {
-      scrollToTop.style.display = window.scrollY > 500 ? 'flex' : 'none';
-  });
-  
-  scrollToTop.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-  
-  // Efecto de navbar al hacer scroll
-  window.addEventListener('scroll', () => {
-      const navbar = document.querySelector('.navbar');
-      if (window.scrollY > 50) {
-          navbar.style.padding = '1rem 5%';
-          navbar.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
-      } else {
-          navbar.style.padding = '1.5rem 5%';
-          navbar.style.boxShadow = '0 2px 15px rgba(0, 0, 0, 0.1)';
-      }
-  });
-  
-  // Animación de elementos al hacer scroll
-  const animateOnScroll = () => {
-      const elements = document.querySelectorAll('.section-title, .product-card, .specialty-card, .testimonial, .contact-form');
-      
-      elements.forEach(element => {
-          const elementPosition = element.getBoundingClientRect().top;
-          const screenPosition = window.innerHeight / 1.3;
-          
-          if (elementPosition < screenPosition) {
-              element.style.opacity = '1';
-              element.style.transform = 'translateY(0)';
-          }
-      });
-  };
-  
-  // Inicializar animaciones
-  window.addEventListener('load', () => {
-      const animatedElements = document.querySelectorAll('.section-title, .product-card, .specialty-card, .testimonial, .contact-form');
-      animatedElements.forEach(element => {
-          element.style.opacity = '0';
-          element.style.transform = 'translateY(30px)';
-          element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-      });
-      
-      animateOnScroll();
-  });
-  
-  window.addEventListener('scroll', animateOnScroll);
-  
-  // Formulario de contacto
-  const contactForm = document.getElementById('contactForm');
-  if (contactForm) {
-      contactForm.addEventListener('submit', (e) => {
-          e.preventDefault();
-          alert('¡Gracias por tu mensaje! Nos pondremos en contacto contigo pronto.');
-          contactForm.reset();
-      });
-  }
+        contactForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            // Validar campos requeridos
+            const requiredFields = contactForm.querySelectorAll('[required]');
+            let isValid = true;
+            
+            requiredFields.forEach(field => {
+                if (!field.value.trim()) {
+                    field.style.borderColor = 'var(--secondary)';
+                    isValid = false;
+                } else {
+                    field.style.borderColor = '';
+                }
+            });
+            
+            if (!isValid) {
+                showNotification('Por favor completa todos los campos requeridos', 'error');
+                return;
+            }
+            
+            const submitBtn = contactForm.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            
+            // Mostrar estado de carga
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+            submitBtn.disabled = true;
+            
+            try {
+                // Agregar productos del carrito si existen
+                if (typeof cart !== 'undefined' && cart.length > 0) {
+                    const messageField = document.getElementById('message');
+                    const cartItems = cart.map(item => 
+                        `${item.name} - ${item.quantity} x $${item.price.toFixed(2)}`
+                    ).join('\n');
+                    
+                    const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                    messageField.value = `PRODUCTOS SELECCIONADOS:\n${cartItems}\nTOTAL: $${total.toFixed(2)}\n\n${messageField.value}`;
+                }
+                
+                // Crear objeto con los datos del formulario usando los entry IDs correctos
+                const formData = new FormData(contactForm);
+                
+                // Obtener el fbzx dinámicamente
+                const fbzx = await getFbzx();
+                formData.set('fbzx', fbzx); // Actualizar el valor de fbzx
+                
+                // Enviar a Google Forms
+                await fetch(contactForm.action, {
+                    method: 'POST',
+                    body: formData,
+                    mode: 'no-cors'
+                });
+                
+                // Mostrar confirmación
+                showNotification('Mensaje enviado con éxito', 'success');
+                contactForm.reset();
+                
+                // Limpiar carrito después de enviar
+                if (typeof cart !== 'undefined') {
+                    cart = [];
+                    updateCartNotification();
+                    updateCartPreview();
+                }
+                
+            } catch (error) {
+                console.error('Error al enviar el formulario:', error);
+                showNotification('Error al enviar, por favor inténtalo de nuevo', 'error');
+            } finally {
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            }
+        });
+    }
 });
-
-// Carrito de compras mejorado
+  
+// ========== CARRITO DE COMPRAS ==========
 let cart = [];
 let cartPreviewVisible = false;
 
@@ -703,54 +785,3 @@ cartStyles.textContent = `
     }
 `;
 document.head.appendChild(cartStyles);
-
-// Google Forms Integration
-document.addEventListener('DOMContentLoaded', () => {
-  const contactForm = document.getElementById('contactForm');
-  
-  if (contactForm) {
-      contactForm.addEventListener('submit', function(e) {
-          e.preventDefault();
-          
-          const submitBtn = contactForm.querySelector('button[type="submit"]');
-          const originalText = submitBtn.innerHTML;
-          
-          // Mostrar feedback de carga
-          submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
-          submitBtn.disabled = true;
-          
-          // Agregar timestamp
-          const timestampField = document.createElement('input');
-          timestampField.type = 'hidden';
-          timestampField.name = 'entry.1234567890'; // Reemplaza con el ID real si tienes campo de timestamp
-          timestampField.value = new Date().toISOString();
-          contactForm.appendChild(timestampField);
-          
-          // Agregar productos del carrito si existen
-          if (typeof cart !== 'undefined' && cart.length > 0) {
-              const messageField = document.getElementById('message');
-              const cartItems = cart.map(item => 
-                  `${item.name} - ${item.quantity} x $${item.price.toFixed(2)}`
-              ).join('\n');
-              
-              const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-              messageField.value = `PRODUCTOS SELECCIONADOS:\n${cartItems}\nTOTAL: $${total.toFixed(2)}\n\n${messageField.value}`;
-          }
-          
-          // Enviar el formulario
-          contactForm.submit();
-          
-          // Mostrar confirmación
-          setTimeout(() => {
-              showNotification('Mensaje enviado con éxito', 'success');
-              submitBtn.innerHTML = originalText;
-              submitBtn.disabled = false;
-              
-              // Resetear formulario después de 2 segundos
-              setTimeout(() => {
-                  contactForm.reset();
-              }, 2000);
-          }, 1500);
-      });
-  }
-});
