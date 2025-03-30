@@ -977,13 +977,16 @@ body {
 
 .secondary-btn {
   background: transparent;
-  color: var(--white);
-  border: 2px solid var(--white);
+  color: var(--secondary);  /* Cambiamos a naranja para mejor contraste */
+  border: 2px solid var(--secondary);
+  transition: var(--transition);
 }
 
 .secondary-btn:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--secondary);
+  color: white;  /* Texto blanco al hacer hover */
   transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(217, 126, 74, 0.3);
 }
 
 .small-btn {
@@ -1333,4 +1336,134 @@ iframe[name="hiddenFrame"] {
   width: 0;
   height: 0;
   border: none;
+}
+
+/* ESCENA NATURAL MEJORADA */
+.nature-scene {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+}
+
+/* Fondo dinámico según hora */
+.sky-gradient {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, #87CEEB, #E0F7FA);
+  transition: background 15s linear;
+}
+
+/* Sol/Luna dinámico */
+.celestial-body {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: #FFEE58;
+  box-shadow: 0 0 40px #FFEE58;
+  top: 15%;
+  right: 15%;
+  transition: all 15s linear;
+}
+
+/* Montañas */
+.mountain-range {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: auto;
+  animation: mountainRise 2.5s ease-out forwards;
+  opacity: 0;
+}
+
+.far-mountains {
+  height: 30%;
+  bottom: 10%;
+  animation-delay: 0.2s;
+  filter: blur(1px);
+}
+
+.mid-mountains {
+  height: 40%;
+  animation-delay: 0.4s;
+  filter: blur(0.5px);
+}
+
+.close-mountains {
+  height: 50%;
+  animation-delay: 0.6s;
+}
+
+/* Casita */
+.house-container {
+  position: absolute;
+  bottom: 12%;
+  left: 10%;
+  transform: translateY(100px);
+  animation: fadeInUp 1.5s ease-out 1s forwards;
+}
+
+.house {
+  width: 120px;
+  height: 96px;
+  filter: drop-shadow(2px 4px 3px rgba(0,0,0,0.2));
+}
+
+.garden {
+  width: 180px;
+  height: 45px;
+  margin-top: -15px;
+  margin-left: -30px;
+}
+
+/* Árboles */
+.tree {
+  position: absolute;
+  bottom: 12%;
+  height: 120px;
+  opacity: 0;
+  filter: drop-shadow(2px 3px 2px rgba(0,0,0,0.15));
+  animation: treeGrow 1s ease-out forwards;
+}
+
+.tree-1 { left: 5%; animation-delay: 1.2s; height: 100px; }
+.tree-2 { right: 8%; animation-delay: 1.4s; height: 140px; }
+/* Posiciones y tamaños variados... */
+
+/* Pájaros */
+.bird {
+  position: absolute;
+  width: 30px;
+  height: 15px;
+  opacity: 0;
+  animation: birdFly 15s linear infinite;
+}
+
+.bird-1 { top: 25%; left: 5%; animation-delay: 0s; }
+.bird-2 { top: 30%; left: 15%; animation-delay: 3s; }
+.bird-3 { top: 20%; left: 10%; animation-delay: 6s; }
+
+/* Animaciones */
+@keyframes mountainRise {
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes treeGrow {
+  from { transform: translateY(50px) scale(0.8); opacity: 0; }
+  to { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+@keyframes birdFly {
+  0% { transform: translateX(-100px) translateY(0); opacity: 0; }
+  10% { opacity: 0.8; }
+  70% { transform: translateX(100vw) translateY(-20px); opacity: 0.8; }
+  100% { transform: translateX(100vw) translateY(0); opacity: 0; }
+}
+
+@keyframes sway {
+  0%, 100% { transform: rotate(-2deg); }
+  50% { transform: rotate(2deg); }
 }
