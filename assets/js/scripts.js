@@ -303,6 +303,69 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
     
+    // Actualizar según hora del día
+    function updateTimeOfDay() {
+        const now = new Date();
+        const hours = now.getHours();
+        const sky = document.querySelector('.sky-gradient');
+        const sun = document.querySelector('.celestial-body');
+        
+        if (hours >= 6 && hours < 18) { // Día
+            const dayProgress = (hours - 6) / 12;
+            sky.style.background = `linear-gradient(to bottom, 
+                hsl(${210 - dayProgress * 60}, 80%, 75%), 
+                hsl(${180 - dayProgress * 30}, 70%, 90%))`;
+                
+            sun.style.background = '#FFEE58';
+            sun.style.boxShadow = '0 0 40px #FFEE58';
+            sun.style.top = `${15 + Math.sin(dayProgress * Math.PI) * 30}%`;
+            sun.style.right = `${15 + (1 - dayProgress) * 60}%`;
+        } else { // Noche
+            const nightProgress = hours < 6 ? (hours / 6) : ((hours - 18) / 6);
+            sky.style.background = `linear-gradient(to bottom, 
+                hsl(240, 70%, ${20 + nightProgress * 10}%), 
+                hsl(220, 50%, ${30 + nightProgress * 10}%))`;
+                
+            sun.style.background = '#E0E0E0';
+            sun.style.boxShadow = '0 0 20px #FFFFFF';
+            sun.style.top = '15%';
+            sun.style.right = `${75 - nightProgress * 60}%`;
+        }
+    }
+
+    // Inicializar y actualizar cada hora
+    updateTimeOfDay();
+    setInterval(updateTimeOfDay, 3600000);
+
+    // Efecto de movimiento con mouse (modificado para excluir botones)
+    document.addEventListener('mousemove', (e) => {
+        const xPos = e.clientX / window.innerWidth;
+        const yPos = e.clientY / window.innerHeight;
+        
+        // Solo aplicar a elementos de la escena natural
+        const sceneElements = document.querySelectorAll(`
+            .sky-gradient, 
+            .celestial-body, 
+            .far-mountains, 
+            .mid-mountains, 
+            .close-mountains,
+            .tree,
+            .bird
+        `);
+        
+        sceneElements.forEach(el => {
+            if(el.classList.contains('far-mountains')) {
+                el.style.transform = `translateX(${xPos * 10}px)`;
+            } else if(el.classList.contains('mid-mountains')) {
+                el.style.transform = `translateX(${xPos * 20}px)`;
+            } else if(el.classList.contains('tree')) {
+                el.style.transform = `rotate(${xPos * 4}deg)`;
+            } else if(el.classList.contains('bird')) {
+                el.style.transform = `translateY(${yPos * 10}px)`;
+            }
+        });
+    });
+    
     // Animación de elementos al hacer scroll
     const animateOnScroll = () => {
         const elements = document.querySelectorAll('.section-title, .product-card, .specialty-card, .testimonial, .contact-form');
